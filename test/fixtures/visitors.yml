@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  browser: MyString
+  version: MyString
+  third_cookies: MyString
+  comp_mode: false
+  css: false
+  os: MyString
+  email: MyString
+
+two:
+  browser: MyString
+  version: MyString
+  third_cookies: MyString
+  comp_mode: false
+  css: false
+  os: MyString
+  email: MyString

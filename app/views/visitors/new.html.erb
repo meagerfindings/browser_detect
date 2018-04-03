@@ -1,0 +1,38 @@
+<h1>New Article</h1>
+
+<%= form_with model: @visitor, local: true do |form| %>
+
+  <% if @visitor.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@visitor.errors.count, "error") %> prohibited
+        your browser information from being saved:
+      </h2>
+      <ul>
+        <% @visitor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :email %>
+  <%= form.text_field :email %> </br>
+  <% @adblocker = false %>
+
+  <!--<script src="/ads.js" type="text/javascript"></script>-->
+  <!--<script>-->
+//    var adblocker = false;
+//      if( window.canRunAds === undefined ){
+//          adblocker = true;
+//      }
+//
+  <!--</script>-->
+  <p>
+    <i>
+      By clicking <strong>Create Visitor</strong>, I agree to allow this program collect information regarding my browser and computer.
+    </i>
+  </p>
+
+  <%= form.submit %>
+<% end %>

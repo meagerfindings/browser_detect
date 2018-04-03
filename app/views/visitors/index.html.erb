@@ -1,0 +1,24 @@
+<h1>Listing Visitors</h1>
+<%= link_to 'New Visitor', new_visitor_path %>
+<table>
+  <tr>
+    <th>User #</th>
+    <th>Email Address</th>
+    <th>Browser</th>
+    <th>Version</th>
+    <th>Compatability View</th>
+    <th>OS</th>
+  </tr>
+
+  <% @visitors.each do |visitor| %>
+    <tr>
+      <td><%= visitor.id %></td>
+      <td><%= visitor.email %></td>
+      <td><%= visitor.browser %></td>
+      <td><%= visitor.version %></td>
+      <td><%= visitor.comp_mode %></td>
+      <td><%= visitor.os.to_s %></td>
+      <td><%= link_to 'Show', visitor_path(visitor) %></td>
+    </tr>
+  <% end %>
+</table>
