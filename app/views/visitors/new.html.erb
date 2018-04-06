@@ -20,13 +20,11 @@
   <%= form.text_field :email %> </br>
   <% @adblocker = false %>
 
-  <script src="/ads.js" type="text/javascript"></script>
-  <script>
-   var adblocker = false;
-     if( window.canRunAds === undefined ){
-         adblocker = true;
-     }
-  </script>
+<!--  Adblock JS solution found in [this Stack Overflow answer](https://stackoverflow.com/a/34745228). -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="adBlockFunction();"></script>
+
+  // TODO add adBlockFunction() to call the API call
+
   <p>
     <i>
       By clicking <strong>Create Visitor</strong>, I agree to allow this program collect information regarding my browser and computer.
