@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_03_231240) do
+ActiveRecord::Schema.define(version: 2018_04_06_201324) do
 
   create_table "visitors", force: :cascade do |t|
     t.string "browser"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_04_03_231240) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "adblock"
   end
 
 end

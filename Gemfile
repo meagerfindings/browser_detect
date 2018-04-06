@@ -63,3 +63,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'browser' # Gem that extends user_agent reporting making OS and additional browser information available.
+
+gem 'active_model_serializers', '~> 0.10.0'

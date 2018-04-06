@@ -8,6 +8,7 @@
  - Add AdBlock checker: [StackOverflow source](https://stackoverflow.com/a/20505898)
  - Add third party cookie checker
  - detect browser plugins???
+    - Add API to receive request from client. Check out this guide: [Build an API in your Rails app now!](https://www.kollegorna.se/en/2015/04/build-an-api-now/)
  - Suggestions logic:
     - CSS false: network blocking or antivirus
     - adlbocker detection: suggest disabling or whitelisting
