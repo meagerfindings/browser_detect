@@ -1,4 +1,4 @@
-<h1>New Visitor</h1>
+<h1>Create New Visitor Record</h1>
 
 <%= form_with model: @visitor, local: true do |form| %>
 
@@ -18,18 +18,25 @@
 
   <%= form.label :email %>
   <%= form.text_field :email %> </br>
-  <% @adblocker = false %>
-
-<!--  Adblock JS solution found in [this Stack Overflow answer](https://stackoverflow.com/a/34745228). -->
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="adBlockFunction();"></script>
-
-  // TODO add adBlockFunction() to call the API call
-
   <p>
     <i>
-      By clicking <strong>Create Visitor</strong>, I agree to allow this program collect information regarding my browser and computer.
+      By clicking <strong>Submit Information</strong>, I agree to allow this program collect information regarding my browser and computer.
     </i>
   </p>
 
-  <%= form.submit %>
+  <%= form.submit "Submit Information" %>
 <% end %>
+
+
+
+<!--  Adblock JS solution found in [this Stack Overflow answer](https://stackoverflow.com/a/34745228). -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="adBlockFunction();"></script>
+
+// TODO add adBlockFunction() to call the API call
+
+<script> function adBlockFunction() {
+  console.log("ASDL");
+  console.log("Did you ever hear the tragedy of Darth Plagueis The Wise?");
+  // place our AJAX API PUT in here!!!
+  }
+</script>
