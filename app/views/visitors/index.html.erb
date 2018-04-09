@@ -19,6 +19,10 @@
       <td><%= visitor.comp_mode %></td>
       <td><%= visitor.os.to_s %></td>
       <td><%= link_to 'Show', visitor_path(visitor) %></td>
+      <td><%= link_to 'Edit', edit_visitor_path(visitor) %></td>
+      <td><%= link_to 'Destroy', visitor_path(visitor),
+                      method: :delete,
+                      data:   { confirm: 'Are you certain?' } %></td>
     </tr>
   <% end %>
 </table>

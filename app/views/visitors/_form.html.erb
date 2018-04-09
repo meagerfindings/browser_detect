@@ -1,0 +1,39 @@
+<%=  form_with model: @visitor, local: true do |form| %>
+  <% if @visitor.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+            <%= pluralize(@visitor.errors.count, "error") %> prohibited
+          this visitor from being saved:
+        </h2>
+        <ul>
+          <% @visitor.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+    <p>
+      <strong>Visitor:</strong>
+      <%= "# " + @visitor.id.to_s %><br>
+
+      <strong>Email Address:</strong>
+      <%= form.text_field :email%><br>
+
+      <strong>Browser:</strong>
+      <%= form.text_field :browser %><br>
+
+      <strong>Version:</strong>
+      <%= form.text_field :version %><br>
+
+      <strong>Compatibility View Enabled:</strong>
+      <%= form.check_box :comp_mode %><br>
+
+      <strong>Operating System:</strong>
+      <%= form.text_field :os %><br>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+<% end %>
