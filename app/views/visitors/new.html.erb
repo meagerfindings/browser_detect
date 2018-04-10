@@ -26,8 +26,8 @@
 
   <%= form.submit "Submit Information" %>
 <% end %>
-
 <p></p>
+
 <!--  Adblock JS solution found in [this Stack Overflow answer](https://stackoverflow.com/a/34745228). -->
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="adBlockFunction();"></script>
 
@@ -35,12 +35,12 @@
 // TODO: Figure out how to get id that we are modifying the adblock attribute for...
 // we can probably use this for the css checker as well
 <script> function adBlockFunction() {
-  console.log("Did you ever hear the tragedy of Darth Plagueis The Wise?");
-
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/api/v1/visitors/new", true); // change this to be user_id/edit?
-  xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send();
-  var response = JSON.parse(xhttp.responseText);
+  // console.log("Did you ever hear the tragedy of Darth Plagueis The Wise?");
+  //
+  // var xhttp = new XMLHttpRequest();
+  // xhttp.open("POST", "/api/v1/visitors/", true); // change this to be user_id/edit?
+  // xhttp.setRequestHeader("Content-type", "application/json");
+  // xhttp.send(); //[{"id":3, "adblock":1}]
+  // var response = JSON.parse(xhttp.responseText);
   }
 </script>

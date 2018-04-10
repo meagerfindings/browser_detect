@@ -29,6 +29,23 @@ class VisitorsController < ApplicationController
     end
   end
 
+  def update
+    @visitor = Visitor.find(params[:id])
+
+    if @visitor.update(visitor_params)
+      redirect_to @visitor
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @visitor = Visitor.find(params[:id])
+    @visitor.destroy
+
+    redirect_to visitors_path
+  end
+
   private
 
   def visitor_params

@@ -22,5 +22,35 @@ class VisitorsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should update visitor' do
+    vis = Visitor.first
+
+    assert_changes('Visitor.first.email') do
+      patch visitor_path(vis), params: { visitor: { email: 'change' } }
+    end
+
+    assert_changes('Visitor.first.browser') do
+      patch visitor_path(vis), params: { visitor: { browser: 'change' } }
+    end
+
+    assert_changes('Visitor.first.version') do
+      patch visitor_path(vis), params: { visitor: { version: 'change' } }
+    end
+
+    assert_changes('Visitor.first.os') do
+      patch visitor_path(vis), params: { visitor: { os: 'change' } }
+    end
+
+    assert_changes('Visitor.first.comp_mode') do
+      patch visitor_path(vis), params: { visitor: { comp_mode: 'true' } }
+    end
+  end
+
+  test 'should destroy visitor' do
+    assert_changes('Visitor.first.id.to_s') do
+      delete visitor_path(Visitor.first)
+    end
+  end
+
   # TODO: how do I validate the visitor_params method at app/controllers/visitors_controller.rb:34?
 end

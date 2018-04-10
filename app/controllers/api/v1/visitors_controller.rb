@@ -22,6 +22,6 @@ class Api::V1::VisitorsController < ApplicationController
   private
 
   def visitor_params
-    params.require(:visitor).permit(:adblock)
+    params.require(:visitor).permit(:adblock, :email)
   end
 end
