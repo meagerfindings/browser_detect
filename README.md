@@ -9,11 +9,12 @@
             - ~~destroy~~
     - Views
         - Edit
-    - API
-        - GET
-        - POST
-        - PUT
-        - DESTROY
+    - ~~API~~
+        - ~~GET~~
+        - ~~INDEX~~
+        - ~~POST~~
+        - ~~PUT~~
+        - ~~DESTROY~~
  - Implement hash ID's rather than sequential ID's for visitior's IDs. [How to Guide](https://hackernoon.com/how-to-use-hash-ids-in-your-url-in-ruby-on-rails-5-e8b7cdd31733) using the [friendly_id gem](https://github.com/norman/friendly_id).
  - Add css checker
  - Add AdBlock checker: [StackOverflow source](https://stackoverflow.com/a/20505898)
