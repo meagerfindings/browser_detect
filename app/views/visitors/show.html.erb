@@ -1,24 +1,37 @@
 <p>
   <strong>Visitor:</strong>
-  <%= "# " + @visitor.id.to_s %></br>
+  <%= "# " + @visitor.id.to_s %><br>
 
   <strong>Email Address:</strong>
-  <%= @visitor.email %></br>
+  <%= @visitor.email %><br>
 
   <strong>Browser:</strong>
-  <%= @visitor.browser %></br>
+  <%= @visitor.browser %>
+  <%= @visitor.version %> <br>
 
-  <strong>Version:</strong>
-  <%= @visitor.version %> </br>
+  <% if @visitor.browser == "ie" %>
+    <strong>Compatibility View Enabled:</strong>
+    <%= @visitor.comp_mode %> <br>
+  <% end %>
 
-  <strong>Compatibility View Enabled:</strong>
-  <%= @visitor.comp_mode %> </br>
+  <% if @visitor.browser =="Edge" %>
+    Microsoft Edge is not currently a support browser for this application. For more information please visit
+    <%= link_to 'browser support help article', "https://help.kapost.com/hc/en-us/articles/212465607-Browser-Support" %>. <br>
+    <strong>Compatibility View Enabled:</strong>
+    <%= @visitor.comp_mode %> <br>
+  <% end %>
 
   <strong>AdBlock Enabled:</strong>
-  <%= @visitor.adblock%> </br>
+  <% if @visitor.adblock %>
+    <strong>True</strong> <br>
+    Please consider adding our website to your AdBlocker's exception list. AdBlockers have been know to cause issues for some users with various parts of our application, like uploading files or editing some fields.
+  <% else %>
+    False
+  <% end %>
+  <br>
 
   <strong>Operating System:</strong>
-  <%= @visitor.os %>
+  <%= @visitor.os.titleize%>
 </p>
 
 <%= link_to 'Edit Visitor', edit_visitor_path(@visitor) %> |
