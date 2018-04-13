@@ -6,7 +6,8 @@
     <th>Email Address</th>
     <th>Browser</th>
     <th>Version</th>
-    <th>Compatability View</th>
+    <th>Compatibility View</th>
+    <th>Adblock</th>
     <th>OS</th>
   </tr>
 
@@ -17,6 +18,7 @@
       <td><%= visitor.browser %></td>
       <td><%= visitor.version %></td>
       <td><%= visitor.comp_mode %></td>
+      <td><%= visitor.adblock%></td>
       <td><%= visitor.os.to_s %></td>
       <td><%= link_to 'Show', visitor_path(visitor) %></td>
       <td><%= link_to 'Edit', edit_visitor_path(visitor) %></td>

@@ -49,6 +49,6 @@ class VisitorsController < ApplicationController
   private
 
   def visitor_params
-    params.require(:visitor).permit(:email, :browser, :version, :os, :comp_mode)
+    params.require(:visitor).permit(:email, :browser, :version, :os, :comp_mode, :adblock, :css)
   end
 end
