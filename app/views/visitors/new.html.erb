@@ -19,14 +19,13 @@
   <%= form.label :email %>
   <%= form.text_field :email %> <br>
   <%= form.hidden_field :adblock, value: false %>
-  <%= form.hidden_field :css, value: false %>
+  <%= form.hidden_field :css %>
 
   <p>
     <i>
       By clicking <strong>Submit Information</strong>, I agree to allow this program collect information regarding my browser and computer.
     </i>
   </p>
-
   <%= form.submit "Submit Information" %>
 <% end %>
 <p></p>
@@ -37,4 +36,16 @@
   document.getElementById('visitor_adblock').value = true;
   console.log("Detected Adblocker.");
   }
+
+// Unable to check CSS on another website. Can't do unless incorporated in the main site:
+// Failed to load https://app.kapost.com/users/sign_in: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+// fetch("https://napa-prod-kapost.netdna-ssl.com/assets/login-d84ed8e7240695928708bf27ebc9b43586c2fec089c3c1b6c506133d8ea6a414.css")
+//   .then(function(data) {
+//     // Here you get the data to modify as you please
+//
+//     })
+//   .catch(function(error) {
+//     // If there is any error you will catch them here
+//     console.log("Failed to load CSS.")
+//   });
 </script>

@@ -1,5 +1,6 @@
 class Visitor < ApplicationRecord
   validates :email, presence: true
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i # Regex Source: https://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_format_of
 
   def self.add_attributes(user_agent)
     browser = Browser.new(user_agent)
