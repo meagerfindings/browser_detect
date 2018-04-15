@@ -1,0 +1,29 @@
+<h1>Edit Browser</h1>
+  <%=  form_with model: @portal, local: true do |form| %>
+    <% if @portal.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@portal.errors.count, "error") %> prohibited
+          this visitor from being saved:
+        </h2>
+        <ul>
+          <% @portal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <p>
+    <strong>Browser:</strong>
+    <%= form.text_field :name %><br>
+  </p>
+  <p>
+    <strong>Current Version:</strong>
+    <%= form.number_field :current %>
+  </p>
+
+    <%= form.submit %><br>
+  <% end %>
+<br>
+<%= link_to 'Cancel Edit / Back to Browsers', portals_path %>

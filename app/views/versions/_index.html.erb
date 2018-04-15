@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Version</th>
+    <th>Issues</th>
+  </tr>
+
+  <% @portal.versions.each do |version| %>
+    <tr>
+      <td><%= version.number %></td>
+      <td> ¯\_(ツ)_/¯<%=  %></td>
+<!--      <td><%#= link_to 'Show', version_path(version) %></td>-->
+<!--      <td><%#= link_to 'Edit', edit_version_path(version) %></td>-->
+      <td><%= link_to 'Delete', portal_path(@portal) + "//versions/#{version.id}", method: :delete, data: { confirm: 'Are you certain?' }%></td>
+    </tr>
+  <% end %>
+</table>

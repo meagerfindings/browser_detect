@@ -1,0 +1,27 @@
+<h1>Create New Browser</h1>
+
+<%= form_with model: @portal, local: true do |f| %>
+  <% if @portal.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@portal.errors.count, "error") %> prohibited
+        the new browser from being saved:
+      </h2>
+      <ul>
+        <%= @portal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :current, "Current Version" %>
+  <%= f.number_field :current%>
+
+  <%= f.submit "Create Browser" %>
+<% end %>
+<br>
+<%= link_to 'Browser Management Page', portals_path %>

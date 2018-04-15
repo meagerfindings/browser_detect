@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+portals = Portal.create([{ name: 'Chrome', current: 65 },
+                         { name: 'Safari', current: 11 },
+                         { name: 'Firefox', current: 59 },
+                         { name: 'Opera', current: 52 },
+                         { name: 'Microsoft Edge', current: 15 },
+                         { name: 'Internet Explorer', current: 11 }])

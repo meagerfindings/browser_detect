@@ -1,7 +1,29 @@
 # Browser Detection with Rails
 
 ## ToDo's
+ - ~~Finish adding Portals~~
+ - Add Versions to Portal Index 
+ - Add Issues under Versions to Portal Index 
+ - Add Versions
+    - ~~model~~
+    - views
+        - ~~_index~~
+        - ~~_form~~
+        - edit
+        - show
+    - ~~controller~~
+ - Add issues
+     - ~~model~~
+     - views
+         - _index
+         - _form 
+         - edit
+         - show
+     - controller
  - Unit Testing:
+    - Portals
+    - Versions
+    - Issues
     - Model/visitor.rb
         - add email validation tests
     - Views/edit.html.erb
@@ -13,7 +35,9 @@
  - Suggestions logic:
     - Alert on browser versions older than two versions old.
         - Find a dynamic source of truth.
-
+- Add styling to site
+    - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)
+    - [Ruby on Rails - Layouts](https://www.tutorialspoint.com/ruby-on-rails/rails-layouts.htm)
 ---
     
 ## PostPoned ToDo's

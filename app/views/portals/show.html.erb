@@ -1,0 +1,17 @@
+<h1>Browser: <%= @portal.name %></h1>
+
+<strong>Browser Name:</strong>
+<%= @portal.name %><br>
+
+<strong>Current Version:</strong>
+<%= @portal.current %><br>
+
+<h2>Versions:</h2>
+<%= render 'versions/index'%>
+
+<h3>Add a Version:</h3>
+<%= render 'versions/form' %>
+
+<br>
+<%= link_to "Edit #{@portal.name}", edit_portal_path(@portal.id) %> |
+<%= link_to 'Browser Management Page', portals_path %>
