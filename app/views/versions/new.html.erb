@@ -1,12 +1,14 @@
-<%= form_with(model: [ @portal, @portal.versions.build ]) do |f| %>
-  <% if @portal.versions.build.errors.any? %>
+<h1>Add a New Version</h1>
+
+<%= form_with(model: @version, url: portal_versions_path) do |f| %>
+  <% if @version.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@portal.versions.build.errors.count, "error") %> prohibited
+        <%= pluralize(@version.errors.count, "error") %> prohibited
         the version from being saved:
       </h2>
       <ul>
-        <%= @portal.versions.build.errors.full_messages.each do |msg| %>
+        <%= @version.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>

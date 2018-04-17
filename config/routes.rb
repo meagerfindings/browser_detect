@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  get 'visitors/index'
+  root 'visitors#new'
 
   resources :visitors
   root 'visitors#index'
 
   resources :portals do
-    resources :versions do
-      resources :issues
-    end
+    resources :versions, shallow: true
   end
-  root 'portals#index'
 
   # api
   namespace :api do

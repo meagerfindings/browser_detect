@@ -1,10 +1,12 @@
 # Browser Detection with Rails
 
 ## ToDo's
+ - Get Versions New to show errors
+ - migrate from SQLite3 to PostGres
  - ~~Finish adding Portals~~
- - Add Versions to Portal Index 
- - Add Issues under Versions to Portal Index 
- - Add Versions
+ - ~~Add Versions to Portal Index~~
+ - Add Issues under Versions to Portal Index
+ - ~~Add Versions~~
     - ~~model~~
     - views
         - ~~_index~~
@@ -15,8 +17,8 @@
  - Add issues
      - ~~model~~
      - views
-         - _index
-         - _form 
+         - `_index`
+         - `_form`
          - edit
          - show
      - controller
@@ -39,7 +41,7 @@
     - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)
     - [Ruby on Rails - Layouts](https://www.tutorialspoint.com/ruby-on-rails/rails-layouts.htm)
 ---
-    
+
 ## PostPoned ToDo's
 - ~~Add css checker~~
       - Unable to check CSS on another website. Can't do unless incorporated in the main site:
@@ -47,5 +49,5 @@
         Failed to load https://app.kapost.com/users/sign_in: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
         fetch("https://napa-prod-kapost.netdna-ssl
         ```
-- ~~CSS false: network blocking or antivirus~~ 
+- ~~CSS false: network blocking or antivirus~~
          - can't create unless added to the main site

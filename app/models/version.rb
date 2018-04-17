@@ -1,4 +1,9 @@
 class Version < ApplicationRecord
   has_many :issues, dependent: :destroy
-  validates :number, presence: true
+
+  belongs_to :portal
+
+  validates :number,
+            uniqueness: { message: 'must be unique' },
+            presence: { message: 'cannot be blank' }
 end

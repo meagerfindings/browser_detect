@@ -7,7 +7,8 @@
 <%= @portal.current %><br>
 
 <h2>Versions:</h2>
-<%= render 'versions/index'%>
+<%= render 'versions/index'%><br>
+<%= link_to 'Versions Page', portal_versions_path(@portal)  %> <br>
 
 <h3>Add a Version:</h3>
 <%= render 'versions/form' %>

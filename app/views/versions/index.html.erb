@@ -1,3 +1,4 @@
+<h1>Versions</h1>
 <table>
   <tr>
     <th>Version</th>
@@ -15,4 +16,8 @@
                       data: { confirm: 'Are you certain?' }%></td>
     </tr>
   <% end %>
-</table>
+</table><br>
+
+<%= link_to "Add a Version", new_portal_version_url %><br> <br>
+
+<%= link_to "Back to Browser Page", portal_path(@portal) %>
