@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :versions, shallow: true
   end
 
+  resources :versions do
+    resources :issues, shallow: true
+  end
+
   # api
   namespace :api do
     namespace :v1 do
