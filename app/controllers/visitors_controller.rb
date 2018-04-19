@@ -18,7 +18,7 @@ class VisitorsController < ApplicationController
   def create
     browser_attributes = Visitor.add_attributes(request.user_agent)
 
-    params[:visitor].merge!(browser_attributes)
+    params[:visitor]&.merge!(browser_attributes)
 
     @visitor = Visitor.new(visitor_params)
 

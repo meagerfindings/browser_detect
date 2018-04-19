@@ -2,7 +2,7 @@
 
 ## ToDo's
  - ~~Get Versions New to show errors~~
- - migrate from SQLite3 to PostGres
+ - ~~migrate from SQLite3 to PostGres~~
  - Rebuild the rest of my tests with RSpec and cover everything else
  - ~~Finish adding Portals~~
  - ~~Add Versions to Portal Index~~
