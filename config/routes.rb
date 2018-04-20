@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :issues, shallow: true
   end
 
+  # resources :issues
+
   # api
   namespace :api do
     namespace :v1 do

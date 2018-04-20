@@ -61,7 +61,7 @@ RSpec.describe PortalsController, type: :controller do
     end
   end
 
-  describe 'Post EDIT' do
+  describe 'UPDATE' do
     it 'updates the portal' do
       post :create, params: { portal: { name: 'name', current: 7, id: 333 } }
       name = 'name'
