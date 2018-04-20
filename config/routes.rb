@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   root 'visitors#new'
 
-  resources :visitors do
-    collection do
-      put :update
-    end
-  end
+  resources :visitors
 
   resources :portals do
     resources :versions, shallow: true
