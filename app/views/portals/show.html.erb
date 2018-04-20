@@ -1,18 +1,12 @@
-<h1>Browser: <%= @portal.name %></h1>
-
-<strong>Browser Name:</strong>
-<%= @portal.name %><br>
+<h1><%= @portal.name %></h1>
 
 <strong>Current Version:</strong>
 <%= @portal.current %><br>
 
+<%= link_to "Edit #{@portal.name}", edit_portal_path(@portal.id) %>
+
 <h2>Versions:</h2>
 <%= render 'versions/index'%><br>
-<%= link_to 'Versions Page', portal_versions_path(@portal)  %> <br>
-
-<h3>Add a Version:</h3>
-<%= render 'versions/form' %>
-
-<br>
-<%= link_to "Edit #{@portal.name}", edit_portal_path(@portal.id) %> |
+<%= link_to 'New Version', new_portal_version_path(@portal)  %> |
+<%= link_to 'Version Management Page', portal_versions_path(@portal)  %> |
 <%= link_to 'Browser Management Page', portals_path %>

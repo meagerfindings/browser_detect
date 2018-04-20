@@ -41,7 +41,7 @@ RSpec.describe VersionsController, type: :controller do
       num = rand(1000)
       post :create, params: { portal_id: portal.id,
                               version: { number: num } }
-      expect(response).to redirect_to(portal_path(portal))
+      expect(response).to redirect_to(version_path(version))
     end
 
     it 'loads New Template when invalid' do
@@ -131,9 +131,9 @@ RSpec.describe VersionsController, type: :controller do
       expect(start).not_to eq(versions.count)
     end
 
-    it 'redirects to Portal' do
-      delete :destroy, params: { id: version.id}
-      expect(response).to redirect_to(portal_path(portal))
+    it 'redirects to Versions' do
+      delete :destroy, params: { id: version.id }
+      expect(response).to redirect_to(portal_versions_path(portal))
     end
   end
 end

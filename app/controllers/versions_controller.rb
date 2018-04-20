@@ -18,7 +18,7 @@ class VersionsController < ApplicationController
     @version = @portal.versions.new(version_params)
 
     if @version.save
-      redirect_to portal_path(@portal)
+      redirect_to version_path(@version)
     else
       render action: :new
     end
@@ -39,11 +39,15 @@ class VersionsController < ApplicationController
   end
 
   def destroy
-    # @portal = Portal.find(params[:portal_id])
     @version = Version.find(params[:id])
     saved_portal_path = @version.portal_id
     @version.destroy
-    redirect_to portal_path(saved_portal_path)
+
+    if request.path == "/versions/#{@version.id}"
+      redirect_to portal_versions_path(saved_portal_path)
+    else
+      redirect_to portal_path(saved_portal_path)
+    end
   end
 
   private

@@ -1,5 +1,5 @@
-<h1>Version: <%= @version.number %> </h1>
-<%= link_to 'Edit Version', edit_version_path(@version) %>
+<h1><%= @version.portal.name %> version <%= @version.number %> </h1>
+<%= link_to 'Change Version Number', edit_version_path(@version) %>
 
 <h2>Known Issues for Version <%= @version.number %></h2>
 <table>
@@ -14,3 +14,5 @@
   </tr>
 
 </table>
+
+<%= link_to "Back to Browser Page", portal_path(@version.portal) %>

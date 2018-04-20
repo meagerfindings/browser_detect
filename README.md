@@ -3,7 +3,7 @@
 ## ToDo's
  - ~~Get Versions New to show errors~~
  - ~~migrate from SQLite3 to PostGres~~
- - Rebuild the rest of my tests with RSpec and cover everything else
+ - Rebuild the rest of my tests with RSpec ~~and cover everything else~~
  - ~~Finish adding Portals~~
  - ~~Add Versions to Portal Index~~
  - Add Issues under Versions to Portal Index
@@ -18,11 +18,11 @@
  - Add issues
      - ~~model~~
      - views
-         - `_index`
+         - `index`
          - `_form`
          - edit
          - show
-     - controller
+     - ~~controller~~
  - Implement hash ID's rather than sequential ID's for visitor's IDs. [How to Guide](https://hackernoon.com/how-to-use-hash-ids-in-your-url-in-ruby-on-rails-5-e8b7cdd31733) using the [friendly_id gem](https://github.com/norman/friendly_id).
  - Add third party cookie checker
     - Third party cookies warning for Salesforce or embedded gallery pages
@@ -31,7 +31,7 @@
  - Suggestions logic:
     - Alert on browser versions older than two versions old.
         - ~~Find a dynamic source of truth.~~
-        - implementing Browsers > Versions > Issues model instead.
+        - ~~implementing Browsers > Versions > Issues model instead.~~
 - Add styling to site
     - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)
     - [Ruby on Rails - Layouts](https://www.tutorialspoint.com/ruby-on-rails/rails-layouts.htm)
