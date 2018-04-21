@@ -8,11 +8,14 @@
     <td>Description</td>
   </tr>
 
-<!--  @issues.each do |issue|-->
-  <tr>
-
-  </tr>
+  <% @version.issues.each do |issue| %>
+    <tr>
+      <td><%= issue.name %></td>
+      <td><%= issue.description %></td>
+    </tr>
+  <% end %>
 
 </table>
-
-<%= link_to "Back to Browser Page", portal_path(@version.portal) %>
+<%= link_to 'Add New Issue', new_version_issue_path(@version) %> |
+<%= link_to 'Issues Management Page', version_issues_path(@version) %> |
+<%= link_to 'Back to Browser Page', portal_path(@version.portal) %>

@@ -1,16 +1,20 @@
 <h1>All Browsers</h1>
-<%= link_to 'Create New Browser', new_portal_path %>
-
 <table>
   <tr>
     <th>Browser</th>
-    <th>Current Version</th>
+    <th>Current</th>
+    <th>Versions</th>
   </tr>
 
   <% @portals.each do |browser| %>
       <tr>
         <td><%= browser.name %></td>
         <td><%= browser.current %></td>
+        <td>
+            <% browser.versions.each do |version| %>
+              <%= version.number %><%= ", " unless version == browser.versions.last %>
+            <% end %>
+        </td>
         <td><%= link_to 'Show', portal_path(browser) %></td>
         <td><%= link_to 'Edit', edit_portal_path(browser) %></td>
         <td><%= link_to 'Delete', portal_path(browser),
@@ -19,6 +23,5 @@
       </tr>
     <% end %>
   </table>
-
-<br>
+<%= link_to 'Create New Browser', new_portal_path %> |
 <%= link_to 'Go to Visitors Index', visitors_path %>

@@ -9,7 +9,11 @@
   <% @portal.versions.each do |version| %>
     <tr>
       <td><%= version.number %></td>
-      <td> ¯\_(ツ)_/¯<%=  %></td>
+      <td>
+        <% version.issues.each do |issue| %>
+        <%= issue.name.titleize %><%= ", " unless issue == version.issues.last %>
+          <% end %>
+      </td>
       <td><%= link_to 'Show', version_path(version) %></td>
       <td><%= link_to 'Edit', edit_version_path(version) %></td>
       <td><%= link_to 'Delete', version_path(version),

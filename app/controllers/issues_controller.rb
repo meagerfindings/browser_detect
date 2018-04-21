@@ -18,7 +18,7 @@ class IssuesController < ApplicationController
     @issue = @version.issues.new(issue_params)
 
     if @issue.save
-      render :show
+      redirect_to issue_path(@issue)
     else
       render :new
     end
@@ -36,6 +36,13 @@ class IssuesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @issue = Issue.find(params[:id])
+    saved_version_path = @issue.version_id
+    @issue.destroy
+    redirect_to version_issues_path(saved_version_path)
   end
 
   private

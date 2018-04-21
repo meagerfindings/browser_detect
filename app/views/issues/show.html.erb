@@ -1,0 +1,12 @@
+<h1><%= @issue.name.titleize%></h1>
+<%= link_to 'Edit Issue', edit_issue_path(@issue) %>
+<p>
+  <i>This issue affects <%= @issue.version.portal.name.strip %> version <%= @issue.version.number %>.</i>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @issue.description %><br>
+</p>
+
+<%= link_to 'Back to Issue Index', version_issues_path(@issue.version) %> |
+<%= link_to "Back to version #{@issue.version.number}", version_path(@issue.version) %>

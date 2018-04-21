@@ -55,13 +55,13 @@ RSpec.describe IssuesController, type: :controller do
       temp_version.save
     end
 
-    it 'gives status code 200' do
+    it 'gives status code 302' do
       put :create, params: { version_id: version.id,
                              issue: {
                                name: 'Harry\s Tears',
                                description: 'What Hermione prevents all the time.'
                              } }
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(302)
     end
 
     it 'renders show on success' do
@@ -70,7 +70,7 @@ RSpec.describe IssuesController, type: :controller do
                                name: 'Wizard Chess',
                                description: 'A game that no muggle can win.'
                              } }
-      expect(response).to render_template('show')
+      expect(response).to redirect_to(issue)
     end
 
     it 'renders create on failure' do
@@ -170,6 +170,28 @@ RSpec.describe IssuesController, type: :controller do
                               issue: { name: 'new name4',
                                        description: new_description } }
       expect(assigns(:issue).description).to eq(new_description)
+    end
+
+    describe 'Delete' do
+      before(:each) do
+        temp_portal = Portal.new(name: 'tester', current: rand(2000))
+        temp_portal.save
+        temp_version = temp_portal.versions.new(number: rand)
+        temp_version.save
+        temp_issue = temp_version.issues.new(name: 'test', description: 'test2')
+        temp_issue.save
+      end
+
+      it 'deletes the issue' do
+        start = issues.count
+        delete :destroy, params: { id: issue.id }
+        expect(start).not_to eq(issues.count)
+      end
+
+      it 'redirects to the index' do
+        delete :destroy, params: { id: issue.id }
+        expect(response).to redirect_to(version_issues_path(version))
+      end
     end
   end
 end

@@ -1,3 +1,22 @@
-<h1><% @issue.version.portal.name %>
-    <% @issue.version.number %> Issues
-</h1>
+<h1><%= "#{@version.portal.name.strip}(#{@version.number}) Issues" %></h1>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+  </tr>
+
+  <% @version.issues.each do |issue| %>
+    <tr>
+      <td><%= issue.name %></td>
+      <td><%= issue.description %></td>
+      <td><%= link_to 'Show', issue_path(issue) %></td>
+      <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+      <td><%= link_to 'Delete', issue_path(issue),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+</table>
+<%= link_to 'Add New Issue', new_version_issue_path(@version) %> |
+<%= link_to 'Back to Browser Page', portals_path(@version.portal) %>
