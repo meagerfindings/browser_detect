@@ -2,7 +2,11 @@
 
 ## ToDo's
  - Tests for views
- - Implement hash ID's rather than sequential ID's for visitor's IDs. [How to Guide](https://hackernoon.com/how-to-use-hash-ids-in-your-url-in-ruby-on-rails-5-e8b7cdd31733) using the [friendly_id gem](https://github.com/norman/friendly_id).
+ - ~~Implement hash ID's rather than sequential ID's for visitor's IDs. [How to Guide](https://hackernoon.com/how-to-use-hash-ids-in-your-url-in-ruby-on-rails-5-e8b7cdd31733) using the [friendly_id gem](https://github.com/norman/friendly_id).~~
+    - Primary source for migration to UUIDs: [Migrating to UUIDs as Primary Keys](http://www.madebyloren.com/posts/migrating-to-uuids-as-primary-keys)
+    - Source that helped with Migration: [Migrate a Rails application to use UUID with PostgreSQL](http://fidalgo.pt/2017/10/11/uuids_in_rails_with_postgresql.html)
+    - Source that helped with `function uuid_generate_v4() does not exist` error during migration:
+    [Rails 5.1 + Using a UUID as a primary key in ActiveRecord with PostgreSQL](https://lab.io/articles/2017/04/13/uuids-rails-5-1/)
  - Add third party cookie checker
     - Third party cookies warning for Salesforce or embedded gallery pages
     - This may not be possible without owning two domains. Could I use pilyr? `_napa_tz` [StackOverflow Source](https://stackoverflow.com/questions/3550790/check-if-third-party-cookies-are-enabled)

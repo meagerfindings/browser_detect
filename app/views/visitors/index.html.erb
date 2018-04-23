@@ -1,25 +1,24 @@
 <h1>Listing Visitors</h1>
-<%= link_to 'New Visitor', new_visitor_path %>
 <table>
   <tr>
-    <th>User #</th>
-    <th>Email Address</th>
+       <th>Email Address</th>
     <th>Browser</th>
     <th>Version</th>
     <th>Compatibility View</th>
     <th>Adblock</th>
     <th>OS</th>
+    <th>User ID</th>
   </tr>
 
   <% @visitors.each do |visitor| %>
     <tr>
-      <td><%= visitor.id %></td>
       <td><%= visitor.email %></td>
       <td><%= visitor.browser %></td>
       <td><%= visitor.version %></td>
       <td><%= visitor.comp_mode %></td>
       <td><%= visitor.adblock%></td>
       <td><%= visitor.os.to_s %></td>
+      <td><%= visitor.id %></td>
       <td><%= link_to 'Show', visitor_path(visitor) %></td>
       <td><%= link_to 'Edit', edit_visitor_path(visitor) %></td>
       <td><%= link_to 'Destroy', visitor_path(visitor),
@@ -28,5 +27,5 @@
     </tr>
   <% end %>
 </table>
-
+<%= link_to 'New Visitor', new_visitor_path %><br>
 <%= link_to 'Browser Management Page', portals_path %>

@@ -3,6 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe VisitorsController, type: :controller do
+  before(:each) do
+    temp_visitor = Visitor.new(email: "test#{rand(200)}@gmail.com")
+    temp_visitor.save
+  end
+
   let(:visitors) { Visitor.all }
   let(:visitor) { Visitor.last }
 
@@ -64,19 +69,19 @@ RSpec.describe VisitorsController, type: :controller do
     it 'updates the visitor' do
       test_email = 'new@email.com'
 
-      post :update, params: { visitor: { email: test_email }, id: 1 }
+      post :update, params: { visitor: { email: test_email }, id: visitor.id }
       expect(assigns(:visitor).email).to eq(test_email)
     end
 
     it 'redirects to visitor successful update' do
       test_email = 'new@email.com'
 
-      post :update, params: { visitor: { email: test_email }, id: 1 }
+      post :update, params: { visitor: { email: test_email }, id: visitor.id }
       expect(response).to redirect_to(visitor_path(visitor))
     end
 
     it 'renders edit on failed update' do
-      post :update, params: { visitor: { email: 1 }, id: 1 }
+      post :update, params: { visitor: { email: 1 }, id: visitor.id }
       expect(response).to render_template('edit')
     end
   end

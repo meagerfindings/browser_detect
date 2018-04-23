@@ -1,4 +1,5 @@
 class Visitor < ApplicationRecord
+  default_scope -> { order("created_at ASC") }
   validates :email, presence: true
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i # Regex Source: https://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_format_of
 
