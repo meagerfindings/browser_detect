@@ -55,10 +55,10 @@ module VisitorsHelper
   end
 
   def outdated(user_version)
-    outdated = 0
-    unless @current_version == 0
+    outdated = false
+    unless @current_version.zero?
       acceptable = @current_version - 2
-      outdated = true if user_version < acceptable
+      outdated = true if user_version.to_i < acceptable
     end
     outdated
   end

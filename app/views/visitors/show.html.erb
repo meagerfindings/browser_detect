@@ -26,7 +26,7 @@
     <br>
   <% end %>
 
-  <% if @visitor.version %>
+  <% if outdated(@visitor.version) %>
     <strong>Version Outdated:</strong>
     Your browser is out of date and needs to be updated. Our website is tested to ensure that it works with the last two major releases of major browsers. Your browser is currently <% @current_version - @visitor.version.to_i %> versions behind the current version.
     <br>
