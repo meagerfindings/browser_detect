@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BrowserDetect</title>
+    <title>Browser Detect<%= ": #{@page_title}" unless @page_title.nil? %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,12 @@
   </head>
 
   <body>
+
+  <!-- Before Yield -->
+
     <%= yield %>
+
+  <!-- After Yield -->
+
   </body>
 </html>

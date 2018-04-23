@@ -1,18 +1,24 @@
+# frozen_string_literal: true
+
 class VisitorsController < ApplicationController
   def index
     @visitors = Visitor.all
+    @page_title = 'All Visitors'
   end
 
   def new
     @visitor = Visitor.new
+    @page_title = 'New Visitor'
   end
 
   def show
     @visitor = Visitor.find(params[:id])
+    @page_title = 'Visitor Details'
   end
 
   def edit
     @visitor = Visitor.find(params[:id])
+    @page_title = 'Edit Visitor'
   end
 
   def create

@@ -2,15 +2,18 @@ class IssuesController < ApplicationController
   def index
     @version = Version.find(params[:version_id])
     @issue = @version.issues.all
+    @page_title = "#{@version.portal.name.titleize} #{@version.number} Issues"
   end
 
   def new
     @version = Version.find(params[:version_id])
     @issue = @version.issues.new
+    @page_title = "New #{@issue.name.titleize}"
   end
 
   def edit
     @issue = Issue.find(params[:id])
+    @page_title = "Edit Issue #{@issue.name.titleize}"
   end
 
   def create
@@ -26,6 +29,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    @page_title = "Issue #{@issue.name.titleize} Details"
   end
 
   def update

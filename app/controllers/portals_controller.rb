@@ -1,18 +1,22 @@
 class PortalsController < ApplicationController
   def index
     @portals = Portal.all
+    @page_title = 'All Browsers'
   end
 
   def new
     @portal = Portal.new
+    @page_title = 'New Browser'
   end
 
   def show
     @portal = Portal.find(params[:id])
+    @page_title = "#{@portal.name} Details"
   end
 
   def edit
     @portal = Portal.find(params[:id])
+    @page_title = "Edit #{@portal.name}"
   end
 
   def create

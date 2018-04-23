@@ -2,15 +2,18 @@ class VersionsController < ApplicationController
   def index
     @portal = Portal.find(params[:portal_id])
     @version = @portal.versions.all
+    @page_title = "#{@portal.name} Versions"
   end
 
   def new
     @portal = Portal.find(params[:portal_id])
     @version = @portal.versions.build
+    @page_title = "New #{@portal.name} Version"
   end
 
   def edit
     @version = Version.find(params[:id])
+    @page_title = "Edit #{@version.portal.name} #{@version.number}"
   end
 
   def create
@@ -26,6 +29,7 @@ class VersionsController < ApplicationController
 
   def show
     @version = Version.find(params[:id])
+    @page_title = "#{@version.portal.name} #{@version.number} Details"
   end
 
   def update
