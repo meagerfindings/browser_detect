@@ -16,10 +16,17 @@ Warns users regarding:
 UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
 
 ## ToDo's
+- Add ability to share unique id link with Support team.
 - Either disable API PUT, POST, DELETE or add API Authentication for these actions.
- - Suggestions logic:
-    - Alert on browser versions older than two versions old.
-- Add dynamic creation of browsers when visitor records are created.
+    - may want to deprecate API altogether
+ - ~~Suggestions logic:~~
+    - ~~Alert on browser versions older than two versions old.~~
+- Add authentication
+    - Only display email address if authenticated user.
+    - Only display visitors' index if authenticated.
+    - Only display Edit Visitor link if authenticated.
+    - Only allow navigation to Browser and subpages by authenticated users.
+- ~~Add dynamic creation of browsers when visitor records are created.~~
 - Remove email? Or make it optional to comply with GDPR?
 - Add styling to site
     - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)

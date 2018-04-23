@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IssuesController < ApplicationController
   def index
     @version = Version.find(params[:version_id])
@@ -8,7 +10,7 @@ class IssuesController < ApplicationController
   def new
     @version = Version.find(params[:version_id])
     @issue = @version.issues.new
-    @page_title = "New #{@issue.name.titleize}"
+    @page_title = 'New Issue'
   end
 
   def edit
