@@ -17,6 +17,7 @@ UUIDs are used for Visitor ID's for obscurity and to allow users to share their 
 
 ## ToDo's
 - Add ability to share unique id link with Support team.
+- Sort tables by name or title rather than created_at
 - Either disable API PUT, POST, DELETE or add API Authentication for these actions.
     - may want to deprecate API altogether
 - Add authentication
