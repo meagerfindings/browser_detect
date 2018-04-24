@@ -12,11 +12,13 @@ Warns users regarding:
 - Adblock
 - IE Compatibility Mode
 - Currently known issues with user's browser. Checks against internal database for this information.
+- When browsers are more than 2 versions out of date.
 
 UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
 
 ## ToDo's
 - Add ability to share unique id link with Support team.
+- ~~Titleize the input from the browser during visitor.create~~
 - Sort tables by name or title rather than created_at
 - Either disable API PUT, POST, DELETE or add API Authentication for these actions.
     - may want to deprecate API altogether

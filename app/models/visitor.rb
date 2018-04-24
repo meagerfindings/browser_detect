@@ -5,9 +5,9 @@ class Visitor < ApplicationRecord
 
   def self.add_attributes(user_agent)
     browser = Browser.new(user_agent)
-    { browser: browser.name.to_s,
+    { browser: browser.name.to_s.titleize,
       version: browser.full_version.to_s,
-      os: "#{browser.platform} #{browser.platform.version}",
+      os: "#{browser.platform} #{browser.platform.version}".titleize,
       comp_mode: browser.compatibility_view? }
   end
 end
