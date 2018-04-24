@@ -2,12 +2,7 @@
 
 class ChangePrimaryKeysToUuid < ActiveRecord::Migration[5.2]
   def up
-    tables = %w[
-      issues
-      portals
-      versions
-      visitors
-    ]
+    tables = %w[visitors]
 
     tables.each do |table|
       remove_column table, :id

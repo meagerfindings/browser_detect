@@ -18,8 +18,11 @@ UUIDs are used for Visitor ID's for obscurity and to allow users to share their 
 
 ## ToDo's
 - Add ability to share unique id link with Support team.
+- switch everything but visitors back to regular ids...
+- Super issue: issue that affects all versions of a portal
+- ~~Update Portal button needs to be changed to be `Update Browser`.~~
 - ~~Titleize the input from the browser during visitor.create~~
-- Sort tables by name or title rather than created_at
+- Sort browser, versions, and issues tables by name or title rather than created_at
 - Either disable API PUT, POST, DELETE or add API Authentication for these actions.
     - may want to deprecate API altogether
 - Add authentication

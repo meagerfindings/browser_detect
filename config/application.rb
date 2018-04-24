@@ -16,9 +16,9 @@ module BrowserDetect
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.generators do |g|
-      g.orm :active_record, primary_key_type: :uuid
-      g.orm :active_record, foreign_key_type: :uuid
-    end
+    # config.generators do |g|
+    #   g.orm :active_record, primary_key_type: :uuid
+    #   g.orm :active_record, foreign_key_type: :uuid
+    # end
   end
 end

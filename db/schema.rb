@@ -16,29 +16,28 @@ ActiveRecord::Schema.define(version: 2018_04_22_232244) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "issues", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "issues", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "version_id"
-    t.index ["created_at"], name: "index_issues_on_created_at"
+    t.bigint "version_id"
+    t.index ["version_id"], name: "index_issues_on_version_id"
   end
 
-  create_table "portals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "portals", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "current"
-    t.index ["created_at"], name: "index_portals_on_created_at"
   end
 
-  create_table "versions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "versions", force: :cascade do |t|
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "portal_id"
-    t.index ["created_at"], name: "index_versions_on_created_at"
+    t.bigint "portal_id"
+    t.index ["portal_id"], name: "index_versions_on_portal_id"
   end
 
   create_table "visitors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -55,4 +54,6 @@ ActiveRecord::Schema.define(version: 2018_04_22_232244) do
     t.index ["created_at"], name: "index_visitors_on_created_at"
   end
 
+  add_foreign_key "issues", "versions"
+  add_foreign_key "versions", "portals"
 end
