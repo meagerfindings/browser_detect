@@ -29,6 +29,7 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.new(visitor_params)
 
     if @visitor.save
+      VisitorMailer.with(visitor: @visitor).share_information_email.deliver_later
       redirect_to @visitor
     else
       render 'new'

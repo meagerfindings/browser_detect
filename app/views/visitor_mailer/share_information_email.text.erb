@@ -1,0 +1,49 @@
+New Visitor Information logged: <%= @visitor.email %>
+=======================================================
+  To view this information on BrowserDetect, just follow this link: <%= @url %>.
+
+ User Information
+
+  Visitor ID:
+  <%= @visitor.id.to_s %>
+
+ Email Address:<
+  <%= @visitor.email %>
+
+ Browser:
+  <%= @visitor.browser %> <%= @visitor.version %>
+
+  <% if @visitor.browser == "Internet Explorer" %>
+   Compatibility View Enabled:
+    <%= @visitor.comp_mode %>
+    <% if @visitor.comp_mode %>
+      Internet Explorer's Compatibility mode has been detected. This feature forces our website to load as if you were using a much older version of IE. Please disable this setting for viewing our website. For mor information on disabling compatibility mode, please visit <%= link_to 'this external article', "https://www.howtogeek.com/128289/how-to-disable-compatibility-mode-in-internet-explorer/" %>.
+    <% end %>
+  <% end %>
+
+  <% if @visitor.browser =="Microsoft Edge" %>
+    Microsoft Edge is not currently a support browser for this application. For more information please visit our
+    <%= link_to 'browser support help article', "https://help.kapost.com/hc/en-us/articles/212465607-Browser-Support" %>.
+  <% end %>
+
+AdBlock Enabled:
+  <% if @visitor.adblock %>
+    True
+    Please consider adding our website to your AdBlocker's exception list. AdBlockers have been know to cause issues for some users with various parts of our application, like uploading files or editing some fields.
+  <% else %>
+    False
+  <% end %>
+
+Operating System: <%= @visitor.os.titleize%>
+
+Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:
+<% if @issues.nil? %>
+  No known issues.
+<% elsif @issues.empty? %>
+  No known issues.
+<% else %>
+  <% @issues&.each do |_x, issue| %>
+      <%= issue[:name] %>
+      <%= issue[:description] %>
+  <% end %>
+<% end %>

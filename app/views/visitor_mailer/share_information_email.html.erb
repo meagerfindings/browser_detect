@@ -1,0 +1,77 @@
+!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>New Visitor Information logged: <%= @visitor.email %></h1>
+<p>
+  To view this information on BrowserDetect, just follow this link: <%= "http://browser-detect.herokuapp.com/visitors/#{@visitor.id}" %>.
+</p>
+<h2> User Information</h2>
+<p>
+  <strong>Visitor ID:</strong>
+  <%= @visitor.id.to_s %><br>
+
+  <strong>Email Address:</strong>
+  <%= @visitor.email %><br>
+
+  <strong>Browser:</strong>
+  <%= @visitor.browser %>
+  <%= @visitor.version %> <br>
+
+  <%# browser_issue_check(@visitor.browser, @visitor.version) %>
+
+  <% if @visitor.browser == "Internet Explorer" %>
+    <strong>Compatibility View Enabled:</strong>
+    <%= @visitor.comp_mode %> <br>
+    <% if @visitor.comp_mode %>
+      Internet Explorer's Compatibility mode has been detected. This feature forces our website to load as if you were using a much older version of IE. Please disable this setting for viewing our website. For mor information on disabling compatibility mode, please visit <%= link_to 'this external article', "https://www.howtogeek.com/128289/how-to-disable-compatibility-mode-in-internet-explorer/" %>.
+      <br>
+    <% end %>
+  <% end %>
+
+  <% if @visitor.browser =="Microsoft Edge" %>
+    Microsoft Edge is not currently a support browser for this application. For more information please visit our
+    <%= link_to 'browser support help article', "https://help.kapost.com/hc/en-us/articles/212465607-Browser-Support" %>.
+    <br>
+  <% end %>
+
+  <%# if outdated(@visitor.version) %>
+<!--    <strong>Version Outdated:</strong>-->
+<!--    Your browser is out of date and needs to be updated. Our website is tested to ensure that it works with the last two major releases of major browsers. Your browser is currently <%# @current_version - @visitor.version.to_i %> versions behind the current version.-->
+<!--    <br>-->
+  <%# end %>
+
+  <strong>AdBlock Enabled:</strong>
+  <% if @visitor.adblock %>
+    <strong>True</strong> <br>
+    Please consider adding our website to your AdBlocker's exception list. AdBlockers have been know to cause issues for some users with various parts of our application, like uploading files or editing some fields.
+  <% else %>
+    False
+  <% end %>
+  <br>
+
+  <strong>Operating System:</strong>
+  <%= @visitor.os.titleize%>
+
+<h3>Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:</h3>
+<% if @issues.nil? %>
+  No known issues. <br>
+<% elsif @issues.empty? %>
+  No known issues. <br>
+<% else %>
+  <table>
+    <tr>
+      <% @issues&.each do |_x, issue| %>
+        <td>
+          <i><%= issue[:name] %></i><br>
+          <%= issue[:description] %>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+  <br>
+<% end %>
+</body>
+</html>
