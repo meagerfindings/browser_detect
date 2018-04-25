@@ -1,18 +1,9 @@
 New Visitor Information logged: <%= @visitor.email %>
 =======================================================
-  To view this information on BrowserDetect, just follow this link: <%= @url %>.
-
- User Information
-
-  Visitor ID:
-  <%= @visitor.id.to_s %>
-
- Email Address:<
-  <%= @visitor.email %>
-
- Browser:
-  <%= @visitor.browser %> <%= @visitor.version %>
-
+User Information:
+Visitor ID: <%= @visitor.id.to_s %>
+Email Address: <%= @visitor.email %>
+Browser:<%= @visitor.browser %> <%= @visitor.version %>
   <% if @visitor.browser == "Internet Explorer" %>
    Compatibility View Enabled:
     <%= @visitor.comp_mode %>
@@ -35,7 +26,6 @@ AdBlock Enabled:
   <% end %>
 
 Operating System: <%= @visitor.os.titleize%>
-
 Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:
 <% if @issues.nil? %>
   No known issues.

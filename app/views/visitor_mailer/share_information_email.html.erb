@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
@@ -20,8 +20,6 @@
   <%= @visitor.browser %>
   <%= @visitor.version %> <br>
 
-  <%# browser_issue_check(@visitor.browser, @visitor.version) %>
-
   <% if @visitor.browser == "Internet Explorer" %>
     <strong>Compatibility View Enabled:</strong>
     <%= @visitor.comp_mode %> <br>
@@ -36,12 +34,6 @@
     <%= link_to 'browser support help article', "https://help.kapost.com/hc/en-us/articles/212465607-Browser-Support" %>.
     <br>
   <% end %>
-
-  <%# if outdated(@visitor.version) %>
-<!--    <strong>Version Outdated:</strong>-->
-<!--    Your browser is out of date and needs to be updated. Our website is tested to ensure that it works with the last two major releases of major browsers. Your browser is currently <%# @current_version - @visitor.version.to_i %> versions behind the current version.-->
-<!--    <br>-->
-  <%# end %>
 
   <strong>AdBlock Enabled:</strong>
   <% if @visitor.adblock %>
