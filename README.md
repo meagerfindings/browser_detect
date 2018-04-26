@@ -7,6 +7,8 @@ Detects the following about Visitor's Browsers:
 - OS & Version
 - IE:
     - Compatibility Mode
+- Sends email with visitor's browser information upon submission.  
+    - _Email recipient is set by the environment variable:_ `EMAIL_TARGET` 
 
 Warns users regarding:
 - Adblock
@@ -17,20 +19,17 @@ Warns users regarding:
 UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
 
 ## ToDo's
-- Add ability to share unique id link with Support team.
+- ~~Add ability to share unique id link with Support team.~~
 - ~~switch everything but visitors back to regular ids...~~
 - Super issue: issue that affects all versions of a portal
-- ~~Update Portal button needs to be changed to be `Update Browser`.~~
-- ~~Titleize the input from the browser during visitor.create~~
-- ~~Sort browser, versions, and issues tables by name or title rather than created_at~~
-- Either disable API PUT, POST, DELETE or add API Authentication for these actions.
-    - may want to deprecate API altogether
+    - could I just add Issues to the Portal as well?
+- ~~Disable API PUT, POST, DELETE or add API Authentication for these actions.
+    - may want to deprecate API altogether~~
 - Add authentication
     - Only display email address if authenticated user.
     - Only display visitors' index if authenticated.
     - Only display Edit Visitor link if authenticated.
     - Only allow navigation to Browser and subpages by authenticated users.
-- Remove email? Or make it optional to comply with GDPR?
 - Add styling to site
     - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)
     - [Ruby on Rails - Layouts](https://www.tutorialspoint.com/ruby-on-rails/rails-layouts.htm)
