@@ -1,0 +1,9 @@
+Hello <%= @user.first_name %>,
+
+Thank you for registering your account with BrowserDetect. To confirm your registration, please click follow this URL:
+<%= confirm_email_user_url(@user.confirm_token) %>
+
+Have a wonderful day!
+
+With best regards,
+The BrowserDetect Team

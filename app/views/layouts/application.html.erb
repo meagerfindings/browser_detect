@@ -24,6 +24,8 @@
     <%= link_to 'Create an Account', signup_path %>
   <% end %>
 
+  <%= render 'shared/flash_messages' unless flash.empty? %>
+
   <!-- Before Yield -->
 
     <%= yield %>

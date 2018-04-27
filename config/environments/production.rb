@@ -66,6 +66,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "browser_detect_#{Rails.env}"
 
   # Mailer configuration
+  config.action_mailer.default_url_options = { host: 'browser-detect.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              ENV['EMAIL_ADDRESS'],

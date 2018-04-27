@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -11,10 +13,27 @@ class UsersController < ApplicationController
     @user.employee = true if @user.email.include? ENV['EMPLOYEE_EMAIL_DOMAIN']
 
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to '/'
+      # session[:user_id] = @user.id
+      UserMailer.registration_confirmation(@user).deliver
+      flash[:success] = 'Please confirm your email address to continue.'
+      redirect_to login_url
     else
-      redirect_to '/signup'
+      @user.errors.full_messages.each do |msg|
+        flash[:error] = msg
+      end
+      redirect_to signup_url
+    end
+  end
+
+  def confirm_email
+    @user = User.find_by_confirm_token(params[:id])
+    if @user
+      @user.email_activate
+      flash[:success] = 'Welcome to BrowserDetect. Your email has been confirmed. Please sign in to continue.'
+      redirect_to login_url
+    else
+      flash[:error] = 'Sorry. Please try to create a new account.'
+      redirect_to signup_path
     end
   end
 

@@ -7,10 +7,17 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
 
     if @user&.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
-      redirect_to '/'
+      if @user.email_confirmed
+        session[:user_id] = @user.id
+        redirect_to '/'
+        # redirect_back @user
+      else
+        flash[:error] = 'Please activate your account by following the instructions in the account confirmation email you received.'
+        redirect_to login_url
+      end
     else
-      redirect_to 'login'
+      flash[:error] = 'Invalid email or password.'
+      redirect_to login_url
     end
   end
 

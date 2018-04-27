@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   end
 
   get 'signup' => 'users#new'
-  resources :users
 
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
 
 
   post 'login' => 'sessions#create'

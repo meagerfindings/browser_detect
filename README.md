@@ -22,16 +22,19 @@ UUIDs are used for Visitor ID's for obscurity and to allow users to share their 
 - Super issue: issue that affects all versions of a portal
     - could I just add Issues to the Portal as well?
 - Add option to delete Visitor data from Visitor Show Page
-- Add users
-    - users can be non employees too, but matching email addresses get employee flag in their account
-    - users profile page is surfaces all records that match the email address and allows users to delete them
-    - employees get admin access
-    - email vaildation necessary for all of the above
+- ~~Add users~~
+    - ~~users can be non employees too, but matching email addresses get employee flag in their account~~
+    - users profile page surfaces all records that match the email address and allows users to delete them
+    - ~~employees get access to Browsers & Visitor Index~~
+    - ~~email confirmation necessary for all of the above 
+        - [Email confirmation tutorial](https://coderwall.com/p/u56rra/ruby-on-rails-user-signup-email-confirmation-tutorial)~~
 - Add authentication
     - Only display email address if authenticated user.
-    - Only display visitors' index if authenticated.
+    - ~~Only display visitors' index if authenticated.~~
     - Only display Edit Visitor link if authenticated.
-    - Only allow navigation to Browser and subpages by authenticated users.
+    - ~~Only allow navigation to Browser and subpages by authenticated users.~~
+- Password Resets
+- ~~Flash messages not displaying~~
 - Real 404 page or redirect to new visitor page
 - Add styling to site
     - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)
