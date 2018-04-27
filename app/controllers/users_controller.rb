@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       # session[:user_id] = @user.id
       UserMailer.registration_confirmation(@user).deliver
-      flash[:success] = 'Please confirm your email address to continue.'
+      flash[:success] = "Please activate your account by following the instructions in the account confirmation email that was just sent to: #{@user.email}."
       redirect_to login_url
     else
       @user.errors.full_messages.each do |msg|

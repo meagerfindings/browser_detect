@@ -44,6 +44,10 @@
   <strong>Operating System:</strong>
   <%= @visitor.os.titleize%>
 
+  <% if current_user&.employee? %>
+    <br><strong>Visitor Notes:</strong> <%= @visitor.notes %><br>
+  <% end %>
+
   <h3>Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:</h3>
   <% if @issues.nil? %>
     No known issues. <br>

@@ -8,7 +8,9 @@ Detects the following about Visitor's Browsers:
 - IE:
     - Compatibility Mode
 - Sends email with visitor's browser information upon submission.  
-    - _Email recipient is set by the environment variable:_ `EMAIL_TARGET` 
+    - _Email recipient is set by the environment variable:_ `EMAIL_TARGET`
+- Visitors can create an account to see, edit, and delete previous browser submissions submitted with their email
+- Employees can create an account in order to add Browser, Versions, Issues and view and edit the visitor records.  
 
 Warns users regarding:
 - Adblock
@@ -19,6 +21,8 @@ Warns users regarding:
 UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
 
 ## ToDo's
+- ~~Add Notes field to visitor records.~~
+    - ~~make this field only visible & editable by employee users.~~
 - Super issue: issue that affects all versions of a portal
     - could I just add Issues to the Portal as well?
 - Add option to delete Visitor data from Visitor Show Page

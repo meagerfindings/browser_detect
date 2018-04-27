@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
+  before_action :require_employee_user, only: %i[index]
+
   def index
     @visitors = Visitor.all
     @page_title = 'All Visitors'
@@ -60,6 +62,6 @@ class VisitorsController < ApplicationController
   private
 
   def visitor_params
-    params.require(:visitor).permit(:email, :browser, :version, :os, :comp_mode, :adblock, :css)
+    params.require(:visitor).permit(:email, :browser, :version, :os, :comp_mode, :adblock, :css, :notes)
   end
 end
