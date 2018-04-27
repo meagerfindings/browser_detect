@@ -1,4 +1,6 @@
 class VersionsController < ApplicationController
+  before_action :require_employee_user, only: %i[index show new create update edit destroy]
+
   def index
     @portal = Portal.find(params[:portal_id])
     @version = @portal.versions.all

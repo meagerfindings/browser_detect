@@ -53,6 +53,10 @@ class VisitorsController < ApplicationController
     redirect_to visitors_path
   end
 
+  def login
+    redirect_to login_path
+  end
+
   private
 
   def visitor_params

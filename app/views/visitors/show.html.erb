@@ -65,5 +65,7 @@
 </p>
 
 <br>
-<%= link_to 'Edit Visitor', edit_visitor_path(@visitor) %> |
-<%= link_to 'Back to Index', visitors_path %>
+<% if current_user&.employee? %>
+  <%= link_to 'Edit Visitor', edit_visitor_path(@visitor) %> |
+  <%= link_to 'Back to Index', visitors_path %>
+<% end %>

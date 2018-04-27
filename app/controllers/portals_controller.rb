@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class PortalsController < ApplicationController
+  before_action :require_employee_user, only: %i[index show new create update edit destroy]
+
   def index
     @portals = Portal.all
     @page_title = 'All Browsers'
@@ -47,6 +51,7 @@ class PortalsController < ApplicationController
   end
 
   private
+
   def portal_params
     params.require(:portal).permit(:name, :current)
   end

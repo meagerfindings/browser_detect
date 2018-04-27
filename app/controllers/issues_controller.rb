@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class IssuesController < ApplicationController
+  before_action :require_employee_user, only: %i[index show new create update edit destroy]
+
   def index
     @version = Version.find(params[:version_id])
     @issue = @version.issues.all

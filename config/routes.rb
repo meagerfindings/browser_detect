@@ -11,8 +11,15 @@ Rails.application.routes.draw do
     resources :issues, shallow: true
   end
 
-  # resources :issues
+  get 'signup' => 'users#new'
+  resources :users
 
+
+
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+  get 'logout' => 'sessions#destroy'
+  get "login" => 'sessions#new'
   # Deprecating API
   # namespace :api do
   #   namespace :v1 do

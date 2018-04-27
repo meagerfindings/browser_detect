@@ -31,19 +31,19 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Mailer configuration
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address:              ENV['EMAIL_ADDRESS'],
-      port:                 ENV['EMAIL_PORT'],
-      domain:               ENV['EMAIL_DOMAIN'],
-      user_name:            ENV['EMAIL_USERNAME'],
-      password:             ENV['EMAIL_KEY'],
-      authentication:       ENV['EMAIL_AUTH'],
-      enable_starttls_auto: true
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     address:              ENV['EMAIL_ADDRESS'],
+  #     port:                 ENV['EMAIL_PORT'],
+  #     domain:               ENV['EMAIL_DOMAIN'],
+  #     user_name:            ENV['EMAIL_USERNAME'],
+  #     password:             ENV['EMAIL_KEY'],
+  #     authentication:       ENV['EMAIL_AUTH'],
+  #     enable_starttls_auto: true
+  # }
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
