@@ -21,8 +21,10 @@ Warns users regarding:
 UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
 
 ## ToDo's
+- Test coverage
 - ~~Add Notes field to visitor records.~~
     - ~~make this field only visible & editable by employee users.~~
+    - ~~add notes to index~~
 - Super issue: issue that affects all versions of a portal
     - could I just add Issues to the Portal as well?
 - Add option to delete Visitor data from Visitor Show Page
@@ -30,9 +32,9 @@ UUIDs are used for Visitor ID's for obscurity and to allow users to share their 
     - ~~users can be non employees too, but matching email addresses get employee flag in their account~~
     - users profile page surfaces all records that match the email address and allows users to delete them
     - ~~employees get access to Browsers & Visitor Index~~
-    - ~~email confirmation necessary for all of the above 
-        - [Email confirmation tutorial](https://coderwall.com/p/u56rra/ruby-on-rails-user-signup-email-confirmation-tutorial)~~
-- Add authentication
+    - ~~email confirmation necessary for all of the above ~~
+        - ~~[Email confirmation tutorial](https://coderwall.com/p/u56rra/ruby-on-rails-user-signup-email-confirmation-tutorial)~~
+- ~~Add authentication~~
     - Only display email address if authenticated user.
     - ~~Only display visitors' index if authenticated.~~
     - Only display Edit Visitor link if authenticated.
