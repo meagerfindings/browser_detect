@@ -20,10 +20,12 @@ Warns users regarding:
 
 UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
 
+Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
+
 ## ToDo's
 - Test coverage
-- Super issue: issue that affects all versions of a portal
-    - could I just add Issues to the Portal as well?
+- ~~Super issue: issue that affects all versions of a portal~~
+    - ~~could I just add Issues to the Portal as well?~~
 - Add option to delete Visitor data from Visitor Show Page
 - user's profile page surfaces all records that match the email address and allows users to delete them
 - Password Resets

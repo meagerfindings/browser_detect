@@ -24,7 +24,7 @@
     <strong>Compatibility View Enabled:</strong>
     <%= @visitor.comp_mode %> <br>
     <% if @visitor.comp_mode %>
-      Internet Explorer's Compatibility mode has been detected. This feature forces our website to load as if you were using a much older version of IE. Please disable this setting for viewing our website. For mor information on disabling compatibility mode, please visit <%= link_to 'this external article', "https://www.howtogeek.com/128289/how-to-disable-compatibility-mode-in-internet-explorer/" %>.
+      Internet Explorer's Compatibility mode has been detected. This feature forces <%= ENV['COMPANY_WEBSITE_NAME'] %> to load as if you were using a much older version of IE. Please disable this setting for viewing <%= ENV['COMPANY_WEBSITE_NAME'] %>. For mor information on disabling compatibility mode, please visit <%= link_to 'this external article', "https://www.howtogeek.com/128289/how-to-disable-compatibility-mode-in-internet-explorer/" %>.
       <br>
     <% end %>
   <% end %>
@@ -38,7 +38,7 @@
   <strong>AdBlock Enabled:</strong>
   <% if @visitor.adblock %>
     <strong>True</strong> <br>
-    Please consider adding our website to your AdBlocker's exception list. AdBlockers have been know to cause issues for some users with various parts of our application, like uploading files or editing some fields.
+    Please consider adding <%= ENV['COMPANY_WEBSITE_NAME'] %> to your AdBlocker's exception list. AdBlockers have been know to cause issues for some users with various parts of our application, like uploading files or editing some fields.
   <% else %>
     False
   <% end %>
