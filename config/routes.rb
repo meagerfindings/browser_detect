@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   resources :portals do
     resources :versions, shallow: true
+    resources :portal_issues, shallow: true
   end
+
+  # resources :portal_issues
 
   resources :versions do
     resources :issues, shallow: true

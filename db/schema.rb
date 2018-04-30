@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_27_222446) do
+ActiveRecord::Schema.define(version: 2018_04_28_200952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2018_04_27_222446) do
     t.datetime "updated_at", null: false
     t.bigint "version_id"
     t.index ["version_id"], name: "index_issues_on_version_id"
+  end
+
+  create_table "portal_issues", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "portal_id"
   end
 
   create_table "portals", force: :cascade do |t|
@@ -73,5 +81,6 @@ ActiveRecord::Schema.define(version: 2018_04_27_222446) do
   end
 
   add_foreign_key "issues", "versions"
+  add_foreign_key "portal_issues", "portals"
   add_foreign_key "versions", "portals"
 end

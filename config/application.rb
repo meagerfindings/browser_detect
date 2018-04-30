@@ -20,5 +20,7 @@ module BrowserDetect
     #   g.orm :active_record, primary_key_type: :uuid
     #   g.orm :active_record, foreign_key_type: :uuid
     # end
+
+
   end
 end
