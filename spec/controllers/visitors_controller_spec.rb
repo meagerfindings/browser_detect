@@ -3,7 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe VisitorsController, type: :controller do
+  include UserAuth
+
   before(:each) do
+    employee_login
+
     temp_visitor = Visitor.new(email: "test#{rand(200)}@gmail.com")
     temp_visitor.save
   end

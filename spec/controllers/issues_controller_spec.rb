@@ -7,8 +7,12 @@ RSpec.describe IssuesController, type: :controller do
   let(:issues) { version.issues.all }
   let(:issue) { issues.last }
 
+  include UserAuth
+
   describe 'Get Index' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand)
@@ -35,6 +39,8 @@ RSpec.describe IssuesController, type: :controller do
 
   describe 'New Issue' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand)
@@ -49,6 +55,8 @@ RSpec.describe IssuesController, type: :controller do
 
   describe 'Create Issue' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand)
@@ -58,7 +66,7 @@ RSpec.describe IssuesController, type: :controller do
     it 'gives status code 302' do
       put :create, params: { version_id: version.id,
                              issue: {
-                               name: 'Harry\s Tears',
+                               name: 'Harry\'s Tears',
                                description: 'What Hermione prevents all the time.'
                              } }
       expect(response).to have_http_status(302)
@@ -85,6 +93,8 @@ RSpec.describe IssuesController, type: :controller do
 
   describe 'Get Show' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand)
@@ -106,6 +116,8 @@ RSpec.describe IssuesController, type: :controller do
 
   describe 'Get Edit' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand)
@@ -127,6 +139,8 @@ RSpec.describe IssuesController, type: :controller do
 
   describe 'Post Update' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand)
@@ -174,6 +188,8 @@ RSpec.describe IssuesController, type: :controller do
 
     describe 'Delete' do
       before(:each) do
+        employee_login
+
         temp_portal = Portal.new(name: 'tester', current: rand(2000))
         temp_portal.save
         temp_version = temp_portal.versions.new(number: rand)

@@ -7,8 +7,12 @@ RSpec.describe VersionsController, type: :controller do
   let(:versions) { Portal.last.versions.all }
   let(:version) { Portal.last.versions.last }
 
+  include UserAuth
+
   describe 'Get Index' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'tester', current: rand(2000))
       temp_portal.save
       temp_version = Version.new(portal_id: temp_portal.id)
@@ -33,6 +37,8 @@ RSpec.describe VersionsController, type: :controller do
 
   describe 'Create Portal' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'TK421', current: rand(2000))
       temp_portal.save
     end
@@ -62,6 +68,8 @@ RSpec.describe VersionsController, type: :controller do
 
   describe 'EDIT' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'TK421', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand(200..300))
@@ -76,6 +84,8 @@ RSpec.describe VersionsController, type: :controller do
 
   describe 'UPDATE' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'TK421', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand(200..300))
@@ -100,6 +110,8 @@ RSpec.describe VersionsController, type: :controller do
 
   describe 'Get SHOW' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'TK421', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand(200..300))
@@ -119,6 +131,8 @@ RSpec.describe VersionsController, type: :controller do
 
   describe 'DESTROY' do
     before(:each) do
+      employee_login
+
       temp_portal = Portal.new(name: 'TK421', current: rand(2000))
       temp_portal.save
       temp_version = temp_portal.versions.new(number: rand(200..300))

@@ -6,6 +6,12 @@ RSpec.describe PortalsController, type: :controller do
   let(:portals) { Portal.all }
   let(:portal) { Portal.last }
 
+  include UserAuth
+
+  before(:each) do
+    employee_login
+  end
+
   describe 'GET index' do
     it 'renders the index template' do
       get :index
@@ -48,7 +54,7 @@ RSpec.describe PortalsController, type: :controller do
 
     it 'sets the portal name' do
       name = 'name test'
-      post :create, params: { portal: { id: 1, name: name, current: 7} }
+      post :create, params: { portal: { id: 1, name: name, current: 7 } }
       expect(assigns(:portal).name).to eq(name)
     end
   end
