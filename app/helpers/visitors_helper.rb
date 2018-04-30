@@ -3,6 +3,7 @@
 module VisitorsHelper
   @current_version = 0
   @issues = {}
+  @portal_issues = {}
 
   def browser_issue_check(browser, version)
     browser_name = browser.to_s.strip
@@ -32,6 +33,11 @@ module VisitorsHelper
 
     portal = Portal.find(portal_id)
     @current_version = portal&.current
+
+    @portal_issues = {}
+    portal&.portal_issues&.each do |value|
+      @portal_issues[value.id] = { name: value.name, description: value.description }
+    end
 
     version_id = ''
 

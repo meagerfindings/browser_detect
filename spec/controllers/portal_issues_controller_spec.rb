@@ -13,14 +13,15 @@ RSpec.describe PortalIssuesController, type: :controller do
 
     temp_portal = Portal.new(name: 'tester', current: rand(2000))
     temp_portal.save
-    temp_portal_issue = temp_portal.portal_issues.new(name: 'test', description: 'testtesttesttest')
+    temp_portal_issue = temp_portal.portal_issues.new(name: 'test',
+                                                      description: 'testtesttesttest')
     temp_portal_issue.save
   end
 
   describe 'Get Index' do
     it 'has a 200 status code' do
       # get :index, params: { portal_id: portal.id }
-      get :index, params: { portal_id: portal.id,  }
+      get :index, params: { portal_id: portal.id }
       expect(response).to have_http_status(200)
     end
 
@@ -99,21 +100,21 @@ RSpec.describe PortalIssuesController, type: :controller do
     it 'gives status code 302' do
       post :update, params: { id: portal_issue.id,
                               portal_issue: { name: 'new name',
-                                       description: 'new day1' } }
+                                              description: 'new day1' } }
       expect(response).to have_http_status(302)
     end
 
     it 'redirects to issue if successful' do
       post :update, params: { id: portal_issue.id,
                               portal_issue: { name: 'new name2',
-                                       description: 'new day2' } }
+                                              description: 'new day2' } }
       expect(response).to redirect_to(portal_issue_path(portal_issue))
     end
 
     it 'renders edit if failure' do
       post :update, params: { id: portal_issue.id,
                               portal_issue: { name: 'fail',
-                                       description: '0123' } }
+                                              description: '0123' } }
       expect(response).to render_template('edit')
     end
 
@@ -121,7 +122,7 @@ RSpec.describe PortalIssuesController, type: :controller do
       new_name = 'mewithoutyou'
       post :update, params: { id: portal_issue.id,
                               portal_issue: { name: new_name,
-                                       description: 'new day2' } }
+                                              description: 'new day2' } }
       expect(assigns(:portal_issue).name).to eq(new_name)
     end
 
@@ -129,7 +130,7 @@ RSpec.describe PortalIssuesController, type: :controller do
       new_description = 'All circles presuppose..'
       post :update, params: { id: portal_issue.id,
                               portal_issue: { name: 'new name4',
-                                       description: new_description } }
+                                              description: new_description } }
       expect(assigns(:portal_issue).description).to eq(new_description)
     end
 

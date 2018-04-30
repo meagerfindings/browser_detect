@@ -48,6 +48,25 @@
     <br><strong>Visitor Notes:</strong> <%= @visitor.notes %><br>
   <% end %>
 
+  <h3>Known browser wide issues with <%= @visitor.browser %>:</h3>
+  <% if @portal_issues.nil? %>
+    No known issues. <br>
+  <% elsif @portal_issues.empty? %>
+    No known issues. <br>
+  <% else %>
+    <table>
+      <tr>
+        <% @portal_issues&.each do |_x, issue| %>
+          <td>
+            <i><%= issue[:name] %></i><br>
+            <%= issue[:description] %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+    <br>
+  <% end %>
+
   <h3>Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:</h3>
   <% if @issues.nil? %>
     No known issues. <br>

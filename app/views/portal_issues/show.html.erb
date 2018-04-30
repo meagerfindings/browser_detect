@@ -1,0 +1,8 @@
+<h1><%= @portal_issue.portal.name.titleize %></h1>
+<%= link_to 'Edit Issue', edit_portal_issue_path(@portal_issue) %>
+<p>
+  <strong>Description:</strong>
+  <%= @portal_issue.description %><br>
+</p>
+
+<%= link_to 'Back to Browser Issue Index', portal_portal_issues_path(@portal_issue.portal) %>

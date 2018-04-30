@@ -25,7 +25,7 @@ class PortalIssuesController < ApplicationController
     @portal_issue = @portal.portal_issues.new(issue_params)
 
     if @portal_issue.save
-      redirect_to portal_issue_path(@portal_issue)
+      redirect_to portal_portal_issues_path(@portal)
     else
       render :new
     end
@@ -50,7 +50,7 @@ class PortalIssuesController < ApplicationController
     @portal_issue = PortalIssue.find(params[:id])
     saved_portal_path = @portal_issue.portal_id
     @portal_issue.destroy
-    redirect_to portal_issue_path(saved_portal_path)
+    redirect_to portal_portal_issues_path(saved_portal_path)
   end
 
   private
