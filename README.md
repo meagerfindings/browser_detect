@@ -24,7 +24,7 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 
 ## ToDo's
 - Test coverage
-- Add option to delete Visitor data from Visitor Show Page
+- ~~Add option to delete Visitor data from Visitor Show Page~~
 - Password Resets
 - Real 404 page or redirect to new visitor page
 - Add styling to site

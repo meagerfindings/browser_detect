@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   get 'signup' => 'users#new'
+  get 'users' => 'users#index'
 
   resources :users do
     member do

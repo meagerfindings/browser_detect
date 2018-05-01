@@ -2,7 +2,15 @@
 
 class UsersController < ApplicationController
   include UsersHelper
-  # before_action :require_employee_user, only %i[index]
+
+  def index
+    if employee_user
+      @users = User.all
+      @page_title = 'All Registered Users'
+    else
+      redirect_to root_path
+    end
+  end
 
   def new
     @user = User.new
@@ -52,14 +60,21 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by_id(params[:id])
-    find_user_visits(@user.email).each do |_key, visit|
-      visit.destroy
+
+    if logged_in(@user.id) || employee_user
+      find_user_visits(@user.email).each do |_key, visit|
+        # visit.destroy
+      end
+
+      flash[:success] = "User profile and all visits for #{@user.email} deleted."
+      # @user.destroy
     end
 
-    flash[:success] = "User profile and all visits for #{@user.email} deleted."
-
-    @user.destroy
-    redirect_to logout_path
+    if logged_in(@user.id)
+      redirect_to logout_path
+    elsif employee_user
+      redirect_to root_path
+    end
   end
 
   private

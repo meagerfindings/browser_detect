@@ -1,0 +1,24 @@
+<h1>Registered Users</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email Address</th>
+    <th>Email Confirmed</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.email_confirmed %></td>
+      <td><%= user.created_at %></td>
+      <td><%= user.updated_at %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>
