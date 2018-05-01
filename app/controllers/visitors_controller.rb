@@ -52,7 +52,11 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.find(params[:id])
     @visitor.destroy
 
-    redirect_to visitors_path
+    if request.referer =~ /users/
+      redirect_to request.referer
+    else
+      redirect_to visitors_path
+    end
   end
 
   def login

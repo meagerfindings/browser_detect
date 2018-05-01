@@ -25,7 +25,8 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 ## ToDo's
 - Test coverage
 - Add option to delete Visitor data from Visitor Show Page
-- user's profile page surfaces all records that match the email address and allows users to delete them
+- ~~user's profile page surfaces all records that match the email address and allows users to delete them~~
+- ~~Bug: deleting user's visit will navigate to the Visitor Index.~~
 - Password Resets
 - Real 404 page or redirect to new visitor page
 - Add styling to site
