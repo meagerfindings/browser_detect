@@ -1,7 +1,8 @@
 <h1>Listing Visitors</h1>
 <table>
   <tr>
-   <th>Email Address</th>
+    <th>Created at</th>
+    <th>Email Address</th>
     <th>Browser</th>
     <th>Version</th>
     <th>Compatibility View</th>
@@ -13,6 +14,7 @@
 
   <% @visitors.each do |visitor| %>
     <tr>
+      <td><%= visitor.created_at %></td>
       <td><%= visitor.email %></td>
       <td><%= visitor.browser %></td>
       <td><%= visitor.version %></td>

@@ -13,13 +13,39 @@
 <% end %>
 
 <h3>Visits recorded with this email address:</h3>
+
 <table>
   <tr>
-    <th></th>
-    <th></th>
+    <th>Created at</th>
+    <th>Browser</th>
+    <th>Version</th>
+    <th>Compatibility View</th>
+    <th>Adblock</th>
+    <th>OS</th>
+    <th>User ID</th>
+    <% if employee_user %>
+      <th>Notes</th>
+    <% end %>
   </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
+  <% find_user_visits(@user.email).each do |_key, visit| %>
+    <tr>
+      <td><%= visit.created_at %></td>
+      <td><%= visit.browser %></td>
+      <td><%= visit.version %></td>
+      <td><%= visit.comp_mode %></td>
+      <td><%= visit.adblock %></td>
+      <td><%= visit.os.to_s %></td>
+      <td><%= visit.id %></td>
+      <% if employee_user %>
+        <td><%= visit.notes %></td>
+      <% end %>
+      <td><%= link_to 'Show', visitor_path(visit) %></td>
+      <% if employee_user %>
+        <td><%= link_to 'Edit', edit_visitor_path(visit) %></td>
+      <% end %>
+      <td><%= link_to 'Delete', visitor_path(visit),
+                      method: :delete,
+                      data:   { confirm: 'Are you certain?' } %></td>
+    </tr>
+  <% end %>
 </table>
