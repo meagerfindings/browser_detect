@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  include UsersHelper
   # before_action :require_employee_user, only %i[index]
 
   def new
@@ -47,6 +48,18 @@ class UsersController < ApplicationController
       flash[:error] = 'Sorry. Please try to create a new account.'
       redirect_to signup_path
     end
+  end
+
+  def destroy
+    @user = User.find_by_id(params[:id])
+    find_user_visits(@user.email).each do |_key, visit|
+      visit.destroy
+    end
+
+    flash[:success] = "User profile and all visits for #{@user.email} deleted."
+
+    @user.destroy
+    redirect_to logout_path
   end
 
   private
