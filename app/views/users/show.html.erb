@@ -1,0 +1,25 @@
+<% if @user.first_name.nil? %>
+  <h1><%= @user.email %>'s Profile</h1>
+<% else %>
+  <h1><%= @user.first_name %>'s Profile</h1>
+<% end %>
+
+<strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %><br>
+<strong>Email: </strong><%= @user.email %><br>
+
+<% if employee_user %>
+  <strong>Confirmed Email Address: </strong><%= @user.email_confirmed? %><br>
+  <strong>Account created at: </strong><%= @user.created_at %><br>
+<% end %>
+
+<h3>Visits recorded with this email address:</h3>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>

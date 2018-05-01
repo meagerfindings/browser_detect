@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  # before_action :require_employee_user, only %i[index]
+
   def new
     @user = User.new
   end
@@ -22,6 +24,16 @@ class UsersController < ApplicationController
         flash[:error] = msg
       end
       redirect_to signup_url
+    end
+  end
+
+  def show
+    user = User.find_by_id(params[:id])
+
+    if logged_in(user.id) || employee_user
+      @user = User.find_by_id(params[:id])
+    else
+      redirect_to root_url
     end
   end
 
