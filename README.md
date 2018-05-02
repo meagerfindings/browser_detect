@@ -24,7 +24,6 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 
 ## TODOs
 - Test coverage
-- ~~Password Resets~~
 - Migrate users to UUID's 
 - Real 404 page or redirect to new visitor page
 
