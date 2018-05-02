@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  default_scope -> { order("created_at ASC") }
+
   has_secure_password
 
   before_create { generate_token(:auth_token) }

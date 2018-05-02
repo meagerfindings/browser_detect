@@ -18,13 +18,13 @@ Warns users regarding:
 - Currently known issues with user's browser. Checks against internal database for this information.
 - When browsers are more than 2 versions out of date.
 
-UUIDs are used for Visitor ID's for obscurity and to allow users to share their uniquely generated ID with the Support team for reference.
+UUIDs are used for Visitor ID's and User ID's for obscurity and to allow visitors to share their uniquely generated ID with the Support team for reference.
 
 Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 
 ## TODOs
 - Test coverage
-- Migrate users to UUID's 
+- ~~Migrate users to UUID's ~~
 - Real 404 page or redirect to new visitor page
 
 ### Large TODOs
