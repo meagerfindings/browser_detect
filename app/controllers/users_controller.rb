@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     @user.employee = true if @user.email.include? ENV['EMPLOYEE_EMAIL_DOMAIN']
 
     if @user.save
-      # session[:user_id] = @user.id
       UserMailer.registration_confirmation(@user).deliver
       flash[:success] = "Please activate your account by following the instructions in the account confirmation email that was just sent to: #{@user.email}."
       redirect_to login_url
@@ -63,11 +62,11 @@ class UsersController < ApplicationController
 
     if logged_in(@user.id) || employee_user
       find_user_visits(@user.email).each do |_key, visit|
-        # visit.destroy
+        visit.destroy
       end
 
       flash[:success] = "User profile and all visits for #{@user.email} deleted."
-      # @user.destroy
+      @user.destroy
     end
 
     if logged_in(@user.id)
@@ -84,6 +83,7 @@ class UsersController < ApplicationController
                                  :last_name,
                                  :email,
                                  :password,
+                                 :password_confirmation,
                                  :employee)
   end
 end

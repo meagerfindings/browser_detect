@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
   root 'visitors#new'
 
   resources :visitors
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
       get :confirm_email
     end
   end
+
+  resources :password_resets
 
 
   post 'login' => 'sessions#create'
