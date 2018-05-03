@@ -35,6 +35,19 @@ RSpec.describe IssuesController, type: :controller do
       get :index, params: { version_id: version.id }
       expect(assigns(:issue)).to eq(issues)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :index, params: { version_id: version.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :index, params: { version_id: version.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'New Issue' do
@@ -50,6 +63,19 @@ RSpec.describe IssuesController, type: :controller do
     it 'gives no_content' do
       post :new, params: { version_id: version.id }
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :new, params: { version_id: version.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :new, params: { version_id: version.id }
+      expect(response).to redirect_to root_url
     end
   end
 
@@ -89,6 +115,27 @@ RSpec.describe IssuesController, type: :controller do
                              } }
       expect(response).to render_template('new')
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      put :create, params: { version_id: version.id,
+                             issue: {
+                                 name: 'Wizard Chess',
+                                 description: 'A game that no muggle can win.'
+                             } }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      put :create, params: { version_id: version.id,
+                             issue: {
+                                 name: 'Wizard Chess',
+                                 description: 'A game that no muggle can win.'
+                             } }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Get Show' do
@@ -112,6 +159,19 @@ RSpec.describe IssuesController, type: :controller do
       get :show, params: { id: issue.id }
       expect(response).to have_http_status(:ok)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :show, params:  { id: issue.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :show, params:  { id: issue.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Get Edit' do
@@ -134,6 +194,19 @@ RSpec.describe IssuesController, type: :controller do
     it 'gives status code 200' do
       get :edit, params: { id: issue.id }
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :edit, params: { id: issue.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :edit, params: { id: issue.id }
+      expect(response).to redirect_to root_url
     end
   end
 
@@ -186,28 +259,60 @@ RSpec.describe IssuesController, type: :controller do
       expect(assigns(:issue).description).to eq(new_description)
     end
 
-    describe 'Delete' do
-      before(:each) do
-        employee_login
+    it 'redirects to home if not logged in' do
+      session.destroy
+      new_description = 'All circles presuppose..'
+      post :update, params: { id: issue.id,
+                              issue: { name: 'new name4',
+                                       description: new_description } }
+      expect(response).to redirect_to root_url
+    end
 
-        temp_portal = Portal.new(name: 'tester', current: rand(2000))
-        temp_portal.save
-        temp_version = temp_portal.versions.new(number: rand)
-        temp_version.save
-        temp_issue = temp_version.issues.new(name: 'test', description: 'test2')
-        temp_issue.save
-      end
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      new_description = 'All circles presuppose..'
+      post :update, params: { id: issue.id,
+                              issue: { name: 'new name4',
+                                       description: new_description } }
+      expect(response).to redirect_to root_url
+    end
+  end
 
-      it 'deletes the issue' do
-        start = issues.count
-        delete :destroy, params: { id: issue.id }
-        expect(start).not_to eq(issues.count)
-      end
+  describe 'Delete' do
+    before(:each) do
+      employee_login
 
-      it 'redirects to the index' do
-        delete :destroy, params: { id: issue.id }
-        expect(response).to redirect_to(version_issues_path(version))
-      end
+      temp_portal = Portal.new(name: 'tester', current: rand(2000))
+      temp_portal.save
+      temp_version = temp_portal.versions.new(number: rand)
+      temp_version.save
+      temp_issue = temp_version.issues.new(name: 'test', description: 'test2')
+      temp_issue.save
+    end
+
+    it 'deletes the issue' do
+      start = issues.count
+      delete :destroy, params: { id: issue.id }
+      expect(start).not_to eq(issues.count)
+    end
+
+    it 'redirects to the index' do
+      delete :destroy, params: { id: issue.id }
+      expect(response).to redirect_to(version_issues_path(version))
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      delete :destroy, params: { id: issue.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      delete :destroy, params: { id: issue.id }
+      expect(response).to redirect_to root_url
     end
   end
 end

@@ -33,6 +33,19 @@ RSpec.describe VersionsController, type: :controller do
       get :index, params: { portal_id: portal.id }
       expect(response).to have_http_status(:ok)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :index, params: { portal_id: portal.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :index, params: { portal_id: portal.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Create Portal' do
@@ -64,6 +77,21 @@ RSpec.describe VersionsController, type: :controller do
                               version: { number: 333 } }
       expect(assigns(:version).number).to eq(333)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      post :create, params: { portal_id: portal.id,
+                              version: { number: 333 } }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      post :create, params: { portal_id: portal.id,
+                              version: { number: 333 } }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'EDIT' do
@@ -79,6 +107,19 @@ RSpec.describe VersionsController, type: :controller do
     it 'loads version EDIT template' do
       get :edit, params: { version: { number: rand(100) }, id: version.id }
       expect(response).to render_template('edit')
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :edit, params: { version: { number: rand(100) }, id: version.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :edit, params: { version: { number: rand(100) }, id: version.id }
+      expect(response).to redirect_to root_url
     end
   end
 
@@ -106,6 +147,19 @@ RSpec.describe VersionsController, type: :controller do
       post :update, params: { id: Version.last.id, version: { number: '' } }
       expect(response).to render_template('edit')
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      post :update, params: { id: version.id, version: { number: rand } }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      post :update, params: { id: version.id, version: { number: rand } }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Get SHOW' do
@@ -126,6 +180,19 @@ RSpec.describe VersionsController, type: :controller do
     it 'loads the show template' do
       get :show, params: { id: version.id }
       expect(response).to render_template('show')
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :show, params: { id: version.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :show, params: { id: version.id }
+      expect(response).to redirect_to root_url
     end
   end
 
@@ -148,6 +215,23 @@ RSpec.describe VersionsController, type: :controller do
     it 'redirects to Versions' do
       delete :destroy, params: { id: version.id }
       expect(response).to redirect_to(portal_versions_path(portal))
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      start = versions.count
+      delete :destroy, params: { id: version.id }
+      expect(start).to eq(versions.count)
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      start = versions.count
+      delete :destroy, params: { id: version.id }
+      expect(start).to eq(versions.count)
+      expect(response).to redirect_to root_url
     end
   end
 end

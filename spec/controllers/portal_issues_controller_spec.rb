@@ -34,12 +34,38 @@ RSpec.describe PortalIssuesController, type: :controller do
       get :index, params: { portal_id: portal.id }
       expect(assigns(:portal_issues)).to eq(portal_issues)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :index, params: { portal_id: portal.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :index, params: { portal_id: portal.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'New Issue' do
     it 'gives no_content' do
       post :new, params: { portal_id: portal.id }
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      post :new, params: { portal_id: portal.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      post :new, params: { portal_id: portal.id }
+      expect(response).to redirect_to root_url
     end
   end
 
@@ -70,6 +96,27 @@ RSpec.describe PortalIssuesController, type: :controller do
                              } }
       expect(response).to render_template('new')
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      put :create, params: { portal_id: portal.id,
+                             portal_issue: {
+                                 name: 'Wizard Chess',
+                                 description: 'A game that no muggle can win.'
+                             } }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      put :create, params: { portal_id: portal.id,
+                             portal_issue: {
+                                 name: 'Wizard Chess',
+                                 description: 'A game that no muggle can win.'
+                             } }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Get Show' do
@@ -82,6 +129,19 @@ RSpec.describe PortalIssuesController, type: :controller do
       get :show, params: { id: portal_issue.id }
       expect(response).to have_http_status(:ok)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :show, params: { id: portal_issue.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :show, params: { id: portal_issue.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Get Edit' do
@@ -93,6 +153,19 @@ RSpec.describe PortalIssuesController, type: :controller do
     it 'gives status code 200' do
       get :edit, params: { id: portal_issue.id }
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :edit, params: { id: portal_issue.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :edit, params: { id: portal_issue.id }
+      expect(response).to redirect_to root_url
     end
   end
 
@@ -134,17 +207,47 @@ RSpec.describe PortalIssuesController, type: :controller do
       expect(assigns(:portal_issue).description).to eq(new_description)
     end
 
-    describe 'Delete' do
-      it 'deletes the issue' do
-        start = portal_issues.count
-        delete :destroy, params: { id: portal_issue.id }
-        expect(start).not_to eq(portal_issues.count)
-      end
+    it 'redirects to home if not logged in' do
+      session.destroy
+      post :update, params: { id: portal_issue.id,
+                              portal_issue: { name: 'new name2',
+                                              description: 'new day2' } }
+      expect(response).to redirect_to root_url
+    end
 
-      it 'redirects to the index' do
-        delete :destroy, params: { id: portal_issue.id }
-        expect(response).to redirect_to portal_portal_issues_path(portal)
-      end
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      post :update, params: { id: portal_issue.id,
+                              portal_issue: { name: 'new name2',
+                                              description: 'new day2' } }
+      expect(response).to redirect_to root_url
+    end
+  end
+
+  describe 'Delete' do
+    it 'deletes the issue' do
+      start = portal_issues.count
+      delete :destroy, params: { id: portal_issue.id }
+      expect(start).not_to eq(portal_issues.count)
+    end
+
+    it 'redirects to the index' do
+      delete :destroy, params: { id: portal_issue.id }
+      expect(response).to redirect_to portal_portal_issues_path(portal)
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      delete :destroy, params: { id: portal_issue.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      delete :destroy, params: { id: portal_issue.id }
+      expect(response).to redirect_to root_url
     end
   end
 end

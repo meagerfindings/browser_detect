@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
-  before_action :require_employee_user, only: %i[index]
+  before_action :require_employee_user, only: %i[index destroy edit update]
 
   def index
     @visitors = Visitor.all

@@ -30,6 +30,19 @@ RSpec.describe VisitorsController, type: :controller do
       get :index
       expect(response).to have_http_status(:ok)
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :index
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :index
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'GET new' do
@@ -67,6 +80,19 @@ RSpec.describe VisitorsController, type: :controller do
       get :edit, params: { id: visitor.id }
       expect(response).to render_template('edit')
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      get :edit, params: { id: visitor.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      get :edit, params: { id: visitor.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'Post EDIT' do
@@ -88,10 +114,30 @@ RSpec.describe VisitorsController, type: :controller do
       post :update, params: { visitor: { email: 1 }, id: visitor.id }
       expect(response).to render_template('edit')
     end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      post :update, params: { visitor: { email: 'test@email.com' }, id: visitor.id }
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      post :update, params: { visitor: { email: 'test@email.com' }, id: visitor.id }
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe 'get show' do
-    it 'loads the visitor' do
+    it 'loads the visitor if employee user' do
+      get :show, params: { id: Visitor.first.id }
+      expect(response).to render_template('show')
+    end
+
+    it 'renders show if logged in user' do
+      session.destroy
+      user_login
       get :show, params: { id: visitor.id }
       expect(response).to render_template('show')
     end
@@ -107,6 +153,23 @@ RSpec.describe VisitorsController, type: :controller do
     it 'redirects to the index' do
       delete :destroy, params: { id: visitor.id }
       expect(response).to redirect_to(visitors_path)
+    end
+
+    it 'redirects to home if not logged in' do
+      session.destroy
+      start = visitors.count
+      delete :destroy, params: { id: visitor.id }
+      expect(start).to eq(visitors.count)
+      expect(response).to redirect_to root_url
+    end
+
+    it 'redirects to home if not employee' do
+      session.destroy
+      user_login
+      start = visitors.count
+      delete :destroy, params: { id: visitor.id }
+      expect(start).to eq(visitors.count)
+      expect(response).to redirect_to root_url
     end
   end
 end
