@@ -23,9 +23,6 @@ UUIDs are used for Visitor ID's and User ID's for obscurity and to allow visitor
 Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 
 ## TODOs
-- ~~Add benefits of creating an account to new visitor page and visitor show page:~~
-    - ~~Ability to see all previous visits.~~
-    - ~~Ability to delete individual previous visits or all visits.~~
 - Test coverage
 - Real 404 page or redirect to new visitor page
 
