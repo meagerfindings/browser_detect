@@ -24,11 +24,23 @@
   <p>
     <i>
       By clicking <strong>Submit Information</strong>, I agree to allow this program collect information regarding my browser and computer.
+    </i><br><br>
+    <% if !current_user.nil? %>
+      <i>
+        If you would like to delete previously submitted records,
+      please <%= link_to 'visit your profile page', user_url(current_user) %>.<br>
+      This will also allow you to access all previous visits recorded with your email address: <%= current_user.email %>.
+      </i>
+  <% else %>
+    <i>
+      If you would like to delete previously submitted records, please <%= link_to 'login', login_url %>
+      or <%= link_to 'create an account', signup_url %>.<br>
+      This will also allow you to access all previous visits recorded with your email address.
     </i>
+  <% end %>
   </p>
   <%= form.submit "Submit Information" %>
 <% end %>
-<p></p>
 
 <!--  Adblock JS solution found in [this Stack Overflow answer](https://stackoverflow.com/a/34745228).-->
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="adBlockFunction();"></script>
