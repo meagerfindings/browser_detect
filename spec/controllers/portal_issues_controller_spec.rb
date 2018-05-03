@@ -59,7 +59,7 @@ RSpec.describe PortalIssuesController, type: :controller do
                                name: 'Wizard Chess',
                                description: 'A game that no muggle can win.'
                              } }
-      expect(response).to redirect_to(portal_issue_path(portal_issue))
+      expect(response).to redirect_to portal_portal_issues_path(portal)
     end
 
     it 'renders create on failure' do
@@ -143,7 +143,7 @@ RSpec.describe PortalIssuesController, type: :controller do
 
       it 'redirects to the index' do
         delete :destroy, params: { id: portal_issue.id }
-        expect(response).to redirect_to(portal_issue_path(portal))
+        expect(response).to redirect_to portal_portal_issues_path(portal)
       end
     end
   end
