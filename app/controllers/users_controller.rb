@@ -13,7 +13,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if !session[:user_id].nil?
+      flash[:error] = 'You already have an account. Sign out to create a new account if desired.'
+      redirect_to root_url
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -69,10 +74,10 @@ class UsersController < ApplicationController
       @user.destroy
     end
 
-    if logged_in(@user.id)
+    if session[:user_id] != @user.id
+      redirect_to users_path if employee_user
+    else
       redirect_to logout_path
-    elsif employee_user
-      redirect_to root_path
     end
   end
 

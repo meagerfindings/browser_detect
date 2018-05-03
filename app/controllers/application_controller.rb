@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     logged_in = false
     if user_attribute.is_a?(String)
       logged_in = true if current_user&.email == user_attribute
+      logged_in = true if current_user&.id == user_attribute
     elsif user_attribute.is_a?(Integer)
       logged_in = true if current_user&.id == user_attribute
     end
@@ -25,7 +26,8 @@ class ApplicationController < ActionController::Base
   end
 
   def employee_user
-    @employee_user ||= true if session[:user_id] && User.find(session[:user_id]).employee
+    @employee_user = false
+    @employee_user = true if session[:user_id] && User&.find(session[:user_id])&.employee
   end
 
   def require_employee_user
