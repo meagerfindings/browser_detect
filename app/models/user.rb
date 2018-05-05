@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   def send_password_reset
     self.update_columns(password_reset_token: SecureRandom.urlsafe_base64,
-                        password_reset_sent_at: Time.zone.now)
+                        password_reset_sent_at: Time.now)
     self.save(valdiate: false)
     UserMailer.password_reset(self).deliver
   end
