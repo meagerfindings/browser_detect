@@ -23,13 +23,8 @@ UUIDs are used for Visitor ID's and User ID's for obscurity and to allow visitor
 Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 
 ## TODOs
-- Test coverage
 - Real 404 page or redirect to new visitor page
 - Switch to SendGrid
-- ~~regex to enforce password complexity~~
-- ~~change password length to 12 characters minimum~~
- - ~~fix in tests~~
- 
 
 ### Large TODOs
 - JavaScript for making the whole Portal workflow into one screen.

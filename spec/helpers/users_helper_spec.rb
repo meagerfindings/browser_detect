@@ -1,15 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Find_User_Visits' do
+    it 'returns the list of visitors for the email address' do
+      email = 'test1@gmail.com'
+      twelve_times = 12
+
+      twelve_times.times do
+        temp_visitor = Visitor.new(email: email)
+        temp_visitor.save
+
+        temp_visitor2 = Visitor.new(email: "test#{rand(200)}@email.com")
+        temp_visitor2.save
+      end
+
+      expect(find_user_visits(email).count).to eq(twelve_times)
+      expect(find_user_visits(email).count).to_not eq(Visitor.all.count)
+    end
+  end
 end

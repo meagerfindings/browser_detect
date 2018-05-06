@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Visitor, type: :model do
@@ -28,7 +30,7 @@ RSpec.describe Visitor, type: :model do
       visitor5 = Visitor.new(email: 'j@.gmail.net')
       expect(visitor5.save).to be_falsey
     end
-    
+
     it 'is valid with valid email addresses' do
       visitor1 = Visitor.new(email: 'mat@gmail.net')
       expect(visitor1.save).to be_truthy
@@ -42,6 +44,5 @@ RSpec.describe Visitor, type: :model do
       visitor4 = Visitor.new(email: 'mat+.greten@gmail.com')
       expect(visitor4.save).to be_truthy
     end
-
   end
 end
