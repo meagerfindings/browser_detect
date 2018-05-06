@@ -9,8 +9,8 @@ RSpec.describe SessionsController, type: :controller do
   describe 'PUT #Create' do
     before(:each) do
       temp_user = User.new(email: "#{rand(2000)}@email.com",
-                           password: 'password',
-                           password_confirmation: 'password',
+                           password: ENV['TEST_PASS'],
+                           password_confirmation: ENV['TEST_PASS'],
                            employee: false,
                            email_confirmed: true,
                            first_name: 'Guybrush',
@@ -20,7 +20,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it 'redirects to login if invalid email' do
       put :create, params: { session: { email: 'wrong email',
-                                        password: 'password' } }
+                                        password: ENV['TEST_PASS'] } }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to login_url
     end
@@ -37,21 +37,21 @@ RSpec.describe SessionsController, type: :controller do
       user.save!(validate: false)
 
       put :create, params: { session: { email: user.email,
-                                        password: 'password' } }
+                                        password: ENV['TEST_PASS'] } }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to login_url
     end
 
     it 'redirects to the root if successful' do
       put :create, params: { session: { email: user.email,
-                                        password: 'password' } }
+                                        password: ENV['TEST_PASS'] } }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to root_url
     end
 
     it 'sets the session[:user_id] to the user.id if successful' do
       put :create, params: { session: { email: user.email,
-                                        password: 'password' } }
+                                        password: ENV['TEST_PASS'] } }
       expect(session[:user_id]).to eq(user.id)
     end
   end

@@ -26,9 +26,9 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 - Test coverage
 - Real 404 page or redirect to new visitor page
 - Switch to SendGrid
-- regex to enforce password complexity
-- change password length to 8 characters minimum
- - fix in tests
+- ~~regex to enforce password complexity~~
+- ~~change password length to 12 characters minimum~~
+ - ~~fix in tests~~
  
 
 ### Large TODOs

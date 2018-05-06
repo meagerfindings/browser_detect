@@ -3,7 +3,7 @@
 module UserAuth
   def employee_login
     email = "#{rand(2_000)}_EMPLOYEE_#{ENV['EMPLOYEE_EMAIL_DOMAIN']}"
-    password = "bumble bee tuna#{rand(50_000)}"
+    password = ENV['TEST_PASS']
     employee = User.create(email: email,
                            password: password,
                            password_confirmation: password,
@@ -17,7 +17,7 @@ module UserAuth
 
   def user_login
     email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
-    password = "Do you have a reservation?#{rand(50_000)}"
+    password = ENV['TEST_PASS']
     user = User.create(email: email,
                        password: password,
                        password_confirmation: password,

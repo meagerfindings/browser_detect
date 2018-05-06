@@ -10,8 +10,8 @@ RSpec.describe UsersController, type: :controller do
 
   before(:each) do
     temp_user = User.new(email: "#{rand(2000)}@email.com",
-                         password: 'password',
-                         password_confirmation: 'password',
+                         password: ENV['TEST_PASS'],
+                         password_confirmation: ENV['TEST_PASS'],
                          employee: false,
                          email_confirmed: true,
                          first_name: 'Guybrush',
@@ -80,7 +80,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'Create User' do
     it 'redirects to login if success' do
       email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
-      password = "Do you have a reservation?#{rand(50_000)}"
+      password = ENV['TEST_PASS']
 
       put :create, params: { user: { email: email,
                                      password: password,
@@ -92,7 +92,7 @@ RSpec.describe UsersController, type: :controller do
 
     it 'creates user' do
       email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
-      password = "Do you have a reservation?#{rand(50_000)}"
+      password = ENV['TEST_PASS']
 
       put :create, params: { user: { email: email,
                                      password: password,
@@ -110,6 +110,84 @@ RSpec.describe UsersController, type: :controller do
                                      first_name: '',
                                      last_name: '' } }
       expect(response).to redirect_to signup_url
+    end
+
+    it 'requires a number in password' do
+      email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
+      password = "NoNumbersss?"
+
+      put :create, params: { user: { email: email,
+                                     password: password,
+                                     password_confirmation: password,
+                                     first_name: 'Guybrush',
+                                     last_name: 'Threepwood' } }
+
+      expect(response).to redirect_to signup_url
+    end
+
+    it 'requires an uppercase letter in password' do
+      email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
+      password = "nouppercaseletters?12"
+
+      put :create, params: { user: { email: email,
+                                     password: password,
+                                     password_confirmation: password,
+                                     first_name: 'Guybrush',
+                                     last_name: 'Threepwood' } }
+
+      expect(response).to redirect_to signup_url
+    end
+
+    it 'requires a lower letter in password' do
+      email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
+      password = "NOLOWERCASELETTERS?12"
+
+      put :create, params: { user: { email: email,
+                                     password: password,
+                                     password_confirmation: password,
+                                     first_name: 'Guybrush',
+                                     last_name: 'Threepwood' } }
+
+      expect(response).to redirect_to signup_url
+    end
+
+    it 'requires a special character in password' do
+      email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
+      password = "NoSpecialCharacters12"
+
+      put :create, params: { user: { email: email,
+                                     password: password,
+                                     password_confirmation: password,
+                                     first_name: 'Guybrush',
+                                     last_name: 'Threepwood' } }
+
+      expect(response).to redirect_to signup_url
+    end
+
+    it 'requires 12 characters in password' do
+      email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
+      password = "0nly11Char?"
+
+      put :create, params: { user: { email: email,
+                                     password: password,
+                                     password_confirmation: password,
+                                     first_name: 'Guybrush',
+                                     last_name: 'Threepwood' } }
+
+      expect(response).to redirect_to signup_url
+    end
+
+    it 'has a valid password if > 12 char, Uppercase, Lowercase, and symbol' do
+      email = "#{rand(2_000)}_NON-EMPLOYEE_@browserdetect.com"
+      password = "This.1Password.Meets.Requirements!?"
+
+      put :create, params: { user: { email: email,
+                                     password: password,
+                                     password_confirmation: password,
+                                     first_name: 'Guybrush',
+                                     last_name: 'Threepwood' } }
+
+      expect(response).to redirect_to login_url
     end
   end
 
@@ -142,8 +220,8 @@ RSpec.describe UsersController, type: :controller do
     it 'confirms user' do
       token = 'harbinger'
       temp_user = User.new(email: "#{rand(2000)}@email.com",
-                           password: 'password',
-                           password_confirmation: 'password',
+                           password: ENV['TEST_PASS'],
+                           password_confirmation: ENV['TEST_PASS'],
                            employee: false,
                            email_confirmed: false,
                            first_name: 'Guybrush',
@@ -158,8 +236,8 @@ RSpec.describe UsersController, type: :controller do
     it 'redirects to login on success' do
       token = 'harbinger'
       temp_user = User.new(email: "#{rand(2000)}@email.com",
-                           password: 'password',
-                           password_confirmation: 'password',
+                           password: ENV['TEST_PASS'],
+                           password_confirmation: ENV['TEST_PASS'],
                            employee: false,
                            email_confirmed: false,
                            first_name: 'Guybrush',

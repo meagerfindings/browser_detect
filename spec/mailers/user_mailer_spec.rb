@@ -9,8 +9,8 @@ RSpec.describe UserMailer, type: :mailer do
 
     before(:each) do
       temp_user = User.new(email:                 'to@example.org',
-                           password:              'password',
-                           password_confirmation: 'password',
+                           password:              ENV['TEST_PASS'],
+                           password_confirmation: ENV['TEST_PASS'],
                            employee:              false,
                            email_confirmed:       true,
                            first_name:            'Guybrush',
@@ -39,8 +39,8 @@ RSpec.describe UserMailer, type: :mailer do
 
     before(:each) do
       temp_user = User.new(email:                 'to@example.org',
-                           password:              'password',
-                           password_confirmation: 'password',
+                           password:              ENV['TEST_PASS'],
+                           password_confirmation: ENV['TEST_PASS'],
                            employee:              false,
                            email_confirmed:       false,
                            first_name:            'Guybrush',
