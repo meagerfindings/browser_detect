@@ -71,3 +71,5 @@ gem 'browser' # Gem that extends user_agent reporting making OS and additional b
 gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'simplecov', require: false, group: :test
+
+gem 'rubocop'

@@ -111,7 +111,6 @@ RSpec.describe PasswordResetsController, type: :controller do
       end
 
       it 'redirects to new_password if token > 30 minutes old' do
-
         user.password_reset_sent_at = Time.now - 800.hour
         user.save!(validate: false)
 
