@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
-  before_action :require_employee_user, only: %i[index destroy edit update]
+  before_action :require_employee_user, only: %i[index edit update]
 
   def index
     @visitors = Visitor.all
@@ -49,13 +49,22 @@ class VisitorsController < ApplicationController
   end
 
   def destroy
-    @visitor = Visitor.find(params[:id])
-    @visitor.destroy
+    @visitor = Visitor&.find(params[:id])
+    @user = User&.find_by_id(session[:user_id])
+    visitor_email = @visitor.email
 
-    if request.referer =~ /users/
-      redirect_to request.referer
+    if employee_user || @user&.email == visitor_email
+      @visitor.destroy
+
+      if request.referer =~ /users/
+        redirect_to request.referer
+      elsif employee_user
+        redirect_to visitors_path
+      elsif visitor_email == @user.email
+        redirect_to user_url(@user)
+      end
     else
-      redirect_to visitors_path
+      redirect_to root_url
     end
   end
 

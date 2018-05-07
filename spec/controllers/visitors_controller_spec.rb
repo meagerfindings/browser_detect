@@ -163,13 +163,27 @@ RSpec.describe VisitorsController, type: :controller do
       expect(response).to redirect_to root_url
     end
 
-    it 'redirects to home if not employee' do
+    it 'redirects to home if not employee and not same user' do
       session.destroy
       user_login
+
       start = visitors.count
       delete :destroy, params: { id: visitor.id }
       expect(start).to eq(visitors.count)
       expect(response).to redirect_to root_url
+    end
+
+    it 'deletes visit if visitor is same user' do
+      session.destroy
+      user_login
+
+      temp_visitor = Visitor.new(email: User.last.email)
+      temp_visitor.save
+
+      start = visitors.count
+      delete :destroy, params: { id: visitor.id }
+      expect(start).to_not eq(visitors.count)
+      expect(response).to redirect_to user_path(User.last)
     end
   end
 end
