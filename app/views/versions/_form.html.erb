@@ -1,13 +1,13 @@
 <%= form_with(model: [ @portal, @portal.versions.build ]) do |f| %>
   <% if @portal.versions.build.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h5>
         <%= pluralize(@portal.versions.build.errors.count, "error") %> prohibited
         the version from being saved:
-      </h2>
+      </h5>
       <ul>
         <%= @portal.versions.build.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="error"><%= msg %></li>
         <% end %>
       </ul>
     </div>

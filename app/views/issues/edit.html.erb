@@ -2,13 +2,13 @@
 <%= form_with model: @issue do |f| %>
   <% if @issue.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h5>
         <%= pluralize(@issue.errors.count, "error") %> prohibited
         the issue from being saved:
-      </h2>
+      </h5>
       <ul>
         <%= @issue.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="error"><%= msg %></li>
         <% end %>
       </ul>
     </div>

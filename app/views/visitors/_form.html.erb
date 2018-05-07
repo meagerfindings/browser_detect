@@ -1,13 +1,13 @@
 <%=  form_with model: @visitor, local: true do |form| %>
   <% if @visitor.errors.any? %>
       <div id="error_explanation">
-        <h2>
+        <h5>
             <%= pluralize(@visitor.errors.count, "error") %> prohibited
           this visitor from being saved:
-        </h2>
+        </h5>
         <ul>
           <% @visitor.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+            <li class="error"><%= msg %></li>
           <% end %>
         </ul>
       </div>

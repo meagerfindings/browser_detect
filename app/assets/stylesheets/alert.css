@@ -1,0 +1,29 @@
+.alert,
+.error,
+.error_messages {
+    padding: 20px;
+    border-radius: 25px;
+    background-color: #c5352b;
+    color: white;
+    margin-bottom: 15px;
+    display:inline-block;
+}
+
+.notice,
+.success {
+    padding: 20px;
+    border-radius: 25px;
+    background-color: #33C3F0;
+    color: white;
+    margin-bottom: 15px;
+    display:inline-block;
+}
+
+.pass_requirements {
+    padding: 20px;
+    border-radius: 25px;
+    background-color: #adadad;
+    color: white;
+    line-height: 1.2;
+    display:inline-block;
+}

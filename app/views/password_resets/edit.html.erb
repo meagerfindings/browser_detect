@@ -22,15 +22,12 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions"><%= f.submit "Update Password" %></div>
-  <p>
-    <strong>Passwords must:</strong>
-    <ul>
-      <li>be at least 12 characters long.</li>
-      <li>contain one uppercase letter.</li>
-      <li>contain one lowercase letter.</li>
-      <li>contain one symbol.</li>
-      <li>contain one number.</li>
-    </ul>
-  </p>
+
+  <div class="pass_requirements">
+    <strong>Password Requirements:</strong><br>
+    <i>Length: 12 characters.<br>
+      At least one uppercase letter and one lowercase letter.<br>
+      At least one symbol and one number.</i>
+  </div>
 <% end %>
 

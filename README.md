@@ -25,8 +25,7 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 ## TODOs
 - Real 404 page or redirect to new visitor page
 - Switch to SendGrid
-- make delete account link a button
-- add error and success css
+- add ~~error~~ and ~~success css~~
 - ~~fix the way that passwords explanations look~~
 
 ### Large TODOs

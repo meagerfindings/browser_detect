@@ -6,17 +6,14 @@
   <%= f.text_field :last_name, placeholder: 'Last name' %><br><br>
   <%= f.password_field :password, placeholder: 'Password' %>
   <%= f.password_field :password_confirmation, placeholder: 'Password confirmation' %>
-  <%= f.hidden_field :employee, value: false %>
-  <%= f.submit 'Create an account', class: 'btn-submit' %>
+  <%= f.hidden_field :employee, value: false %><br>
+  <%= f.submit 'Create an account', class: 'btn-submit' %><br>
 
-  <p>
-    <strong>Passwords must:</strong>
-  <ul>
-    <li>be at least 12 characters long.</li>
-    <li>contain one uppercase letter.</li>
-    <li>contain one lowercase letter.</li>
-    <li>contain one symbol.</li>
-    <li>contain one number.</li>
-  </ul>
-  </p>
+  <div class="pass_requirements">
+    <strong>Password Requirements:</strong><br>
+    <i>Length: 12 characters.<br>
+    At least one uppercase letter and one lowercase letter.<br>
+      At least one symbol and one number.</i>
+  </div>
+
 <% end %>

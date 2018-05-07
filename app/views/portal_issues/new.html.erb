@@ -2,13 +2,13 @@
 <%= form_with(model: @portal_issue, url: portal_portal_issues_path) do |f| %>
   <% if @portal_issue.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h5>
         <%= pluralize(@portal_issue.errors.count, "error") %> prohibited
         the issue from being saved:
-      </h2>
+      </h5>
       <ul>
         <%= @portal_issue.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="error"><%= msg %></li>
         <% end %>
       </ul>
     </div>
