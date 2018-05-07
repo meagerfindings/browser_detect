@@ -22,15 +22,14 @@ UUIDs are used for Visitor ID's and User ID's for obscurity and to allow visitor
 
 Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 
+Most CSS provided from [Skeleton CSS](http://getskeleton.com/). 
+
 ## TODOs
 - Real 404 page or redirect to new visitor page
 - Switch to SendGrid
-- add ~~error~~ and ~~success css~~
-- ~~fix the way that passwords explanations look~~
 
 ### Large TODOs
 - JavaScript for making the whole Portal workflow into one screen.
-- Create my own version of Browser Gem to read user agent strings.
     
 ---
 
