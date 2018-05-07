@@ -6,9 +6,7 @@
 
     <strong>Email Address:</strong>
     <%= @visitor.email %><br>
-  <% end %>
-
-  <% if current_user %>
+  <% elsif current_user %>
     <strong>Email Address:</strong>
     <%= @visitor.email %><br>
   <% end %>
@@ -110,6 +108,6 @@
 <% else %>
     <p>
       <i>If you would like to delete this record, please <%= link_to 'login', login_url %> or <%= link_to 'create an account', signup_url %>.<br>
-        This will also allow you to access all previous visits recorded with your email address: <%= @visitor.email %>.</i>
+        This will also allow you to access all previous visits recorded with your email address.</i>
     </p>
 <%  end %>

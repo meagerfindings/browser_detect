@@ -25,6 +25,7 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 Most CSS provided from [Skeleton CSS](http://getskeleton.com/). 
 
 ## TODOs
+- ~~Fix double email address showing in `Visitor#show` for employee users.~~
 - Real 404 page or redirect to new visitor page
 - Switch to SendGrid
 
