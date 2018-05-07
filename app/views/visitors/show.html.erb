@@ -1,9 +1,17 @@
 <p>
-  <strong>Visitor ID:</strong>
-  <%= @visitor.id.to_s %><br>
 
-  <strong>Email Address:</strong>
-  <%= @visitor.email %><br>
+  <% if current_user&.employee? %>
+    <strong>Visitor ID:</strong>
+    <%= @visitor.id.to_s %><br>
+
+    <strong>Email Address:</strong>
+    <%= @visitor.email %><br>
+  <% end %>
+
+  <% if current_user %>
+    <strong>Email Address:</strong>
+    <%= @visitor.email %><br>
+  <% end %>
 
   <strong>Browser:</strong>
   <%= @visitor.browser %>
@@ -48,7 +56,8 @@
     <br><strong>Visitor Notes:</strong> <%= @visitor.notes %><br>
   <% end %>
 
-  <h3>Known browser wide issues with <%= @visitor.browser %>:</h3>
+  <br>
+  <strong>Known browser wide issues with <%= @visitor.browser %>:</strong><br>
   <% if @portal_issues.nil? %>
     No known issues. <br>
   <% elsif @portal_issues.empty? %>
@@ -67,7 +76,7 @@
     <br>
   <% end %>
 
-  <h3>Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:</h3>
+  <strong>Known issues with <%= "#{@visitor.browser} #{@visitor.version}" %>:</strong><br>
   <% if @issues.nil? %>
     No known issues. <br>
   <% elsif @issues.empty? %>

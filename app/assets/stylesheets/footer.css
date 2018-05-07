@@ -1,0 +1,7 @@
+footer, .push {
+    position: fixed;
+    padding-top: 5px;
+    width: 99%;
+    bottom:0;
+    z-index: 0;
+}

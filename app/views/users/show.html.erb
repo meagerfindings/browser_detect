@@ -50,6 +50,7 @@
   <% end %>
 </table>
 
-<%= link_to 'Delete User Profile and All Visits', user_path(@user),
-method: :delete,
-data:   { confirm: 'Are you certain? This action cannot be undone.' } %>
+<%= button_to 'Delete User Profile and All Visits', user_path(@user),
+              class: 'button-primary',
+              method: :delete,
+              data:   { confirm: 'Are you certain? This action cannot be undone.' } %>

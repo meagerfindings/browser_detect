@@ -25,12 +25,12 @@ Website name can be set globally through ENV Variable: `COMPANY_WEBSITE_NAME`.
 ## TODOs
 - Real 404 page or redirect to new visitor page
 - Switch to SendGrid
+- make delete account link a button
+- add error and success css
+- ~~fix the way that passwords explanations look~~
 
 ### Large TODOs
 - JavaScript for making the whole Portal workflow into one screen.
-- Add styling to site
-    - check out [this tutorial](https://www.railstutorial.org/book/rails_flavored_ruby#cha-rails_flavored_ruby)
-    - [Ruby on Rails - Layouts](https://www.tutorialspoint.com/ruby-on-rails/rails-layouts.htm)
 - Create my own version of Browser Gem to read user agent strings.
     
 ---
