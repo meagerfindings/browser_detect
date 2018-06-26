@@ -73,3 +73,5 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'simplecov', require: false, group: :test
 
 gem 'rubocop'
+
+gem 'react_on_rails', '~> 7.0', '>= 7.0.4'
